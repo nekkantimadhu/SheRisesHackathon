@@ -1,0 +1,193 @@
+body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 20px; }
+   
+/* Container for the two flows */
+.journey-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Column styles for each gender */
+.journey-column {
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.journey-column.female {
+  background-color: rgba(219, 112, 147, 0.05);
+  border-left: 4px solid palevioletred;
+}
+
+.journey-column.male {
+  background-color: rgba(70, 130, 180, 0.05);
+  border-left: 4px solid steelblue;
+}
+
+/* Column headers */
+.column-header {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.female .column-header {
+  color: palevioletred;
+}
+
+.male .column-header {
+  color: steelblue;
+}
+
+/* Existing styles with minor modifications */
+.stage { display: flex; align-items: center; margin-bottom: 30px; }
+
+.circle { 
+  width: 60px; 
+  height: 60px; 
+  border-radius: 50%; 
+  color: #fff; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.2em; 
+  margin-right: 20px; 
+}
+
+.female .circle { background: palevioletred; }
+.male .circle { background: steelblue; }
+
+.stage-info { 
+  background: #fff; 
+  padding: 15px; 
+  border-radius: 8px; 
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07); 
+  flex: 1; 
+}
+
+.dropoff { font-weight: bold; margin-top: 5px; }
+.female .dropoff { color: #d62828; }
+.male .dropoff { color: #9c2828; }
+
+.stat { color: #555; margin-top: 8px; font-style: italic; }
+.highlight { color: #d62828; font-weight: bold; }
+
+.arrow { 
+  font-size: 2em; 
+  margin: 0 10px; 
+  color: #bbb; 
+  display: block; 
+  text-align: center;
+}
+
+h1 { text-align: center; margin-bottom: 10px; }
+
+/* Person figures for visualization */
+.figures-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 5px;
+}
+
+.figure-icon {
+  font-size: 18px;
+  opacity: 0.3;
+}
+
+.figure-icon.active {
+  opacity: 1;
+}
+
+.female .figure-icon {
+  color: palevioletred;
+}
+
+.male .figure-icon {
+  color: steelblue;
+}
+
+.financial-label {
+  text-align: center;
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 5px;
+}
+
+.pay-gap {
+  margin-top: 10px;
+  padding: 5px 8px;
+  background: #ffe8e8;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border-left: 3px solid #d62828;
+}
+
+/* New storytelling elements */
+.story-intro {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  text-align: center;
+  color: #444;
+}
+
+.persona {
+  font-style: italic;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 8px;
+}
+
+.narrative {
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.reflection {
+  background: #f8f8f8;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 0.9em;
+  border-left: 3px solid #999;
+}
+
+.journey-conclusion {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+
+.call-to-action {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+  color: #333;
+}
+
+/* Adding a new style for harassment data */
+.harassment-stat {
+  margin-top: 10px;
+  padding: 5px 8px;
+  background: #f2e6ff;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border-left: 3px solid #6a0dad;
+}
+
+/* Adding style for societal expectations */
+.societal-expectations {
+  margin-top: 10px;
+  padding: 5px 8px;
+  background: #e6f7ff;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border-left: 3px solid #0077b6;
+}
