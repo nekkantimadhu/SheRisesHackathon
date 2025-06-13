@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>Gender Gap Journey Map</title>
 <link rel="stylesheet" href="css/styles.css">
+<script src="js/svg-creation.js"></script>
+<script src="js/script.js"></script>
 </head>
 <body>
 <h1>Two Paths, One World</h1>
@@ -18,6 +20,9 @@
   <!-- FEMALE JOURNEY -->
   <div class="journey-column female">
     <div class="column-header">Maya's Journey</div>
+    <div class="chart-container" id="chartContainer">
+            <!-- Charts will be generated here -->
+       </div>
     
     <div class="stage">
       <div class="circle">Birth</div>
@@ -25,19 +30,8 @@
         <div class="persona">Maya is born with endless potential in a world of possibilities.</div>
         <div class="narrative">Before she can speak or walk, subtle biases begin to shape her future. In some parts of the world, being born female already means facing different expectations.</div>
         <div class="stat">In some regions, <a href="https://genderdata.worldbank.org/indicators/sp-pop-brth-mf" target="_blank">sex ratio at birth is skewed toward boys</a> (e.g., 111.8 males per 100 females in East Asia & Pacific).</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-        </div>
         <div class="financial-label">100% potential for financial independence</div>
+         <script> updateChartGirl(100); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -50,19 +44,8 @@
         <div class="stat"><a href="https://genderdata.worldbank.org/indicators/se-prm-cmpt-fe-zs" target="_blank">Primary completion rate for girls globally: 89.6% (World Bank, 2020)</a>.</div>
         <div class="dropoff">Drop-off: In South Asia, <a href="https://genderdata.worldbank.org/indicators/se-prm-cmpt-fe-zs?locations=8S" target="_blank">girls' primary completion is 87.1% vs. 88.9% for boys</a>.</div>
         <div class="reflection">In rural Nepal, Maya walks two hours to school each day. Her brother stopped attending to help on the family farm, but Maya persists despite also handling household chores after class.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon">👧</span>
-          <span class="figure-icon">👧</span>
-        </div>
         <div class="financial-label">80% on track for financial independence</div>
+         <script> updateChartGirl(80); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -75,19 +58,8 @@
         <div class="stat"><a href="https://genderdata.worldbank.org/indicators/se-sec-cuat-up-fe-zs" target="_blank">Secondary completion rate for girls globally: 76% (World Bank, 2020)</a>.</div>
         <div class="dropoff">Drop-off: <a href="https://genderdata.worldbank.org/topics/education/" target="_blank">5.5 million more girls than boys are out of school at secondary level</a> in low-income countries.</div>
         <div class="reflection">In Argentina, Maya's teacher notices her aptitude for mathematics but discourages her from pursuing it further, suggesting that language arts might be more "suitable."</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon active">👧</span>
-          <span class="figure-icon">👧</span>
-          <span class="figure-icon">👧</span>
-          <span class="figure-icon">👧</span>
-          <span class="figure-icon">👧</span>
-        </div>
         <div class="financial-label">60% on track for financial independence</div>
+         <script> updateChartGirl(60); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -101,19 +73,8 @@
         <div class="dropoff">Drop-off: Only <a href="https://genderdata.worldbank.org/topics/education/" target="_blank">35% of STEM students worldwide are female</a>.</div>
         <div class="pay-gap">Field choice impact: Women-dominated fields lead to 26% lower earnings on average.</div>
         <div class="reflection">In Canada, Maya's computer science class has only 7 women among 35 students. Despite excellent grades, she often doubts whether she belongs in the program.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-        </div>
         <div class="financial-label">50% on track for financial independence</div>
+         <script> updateChartGirl(50); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -130,19 +91,8 @@
         <div class="stat"><a href="https://genderdata.worldbank.org/indicators/sl-emp-smgt-fe-zs" target="_blank">Women hold only 28.3% of managerial positions globally (World Bank, 2022)</a>.</div>
         <div class="dropoff">Only <a href="https://genderdata.worldbank.org/topics/economic-opportunity/" target="_blank">23% of firms have a female top manager</a>.</div>
         <div class="reflection">In Brazil, Maya discovers her male colleague with identical qualifications was offered a starting salary 12% higher than hers. When she negotiates, she's labeled "aggressive." After work, she rushes home to care for elderly parents while male colleagues network at happy hour.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-        </div>
         <div class="financial-label">30% achieve financial independence</div>
+         <script> updateChartGirl(30); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -158,19 +108,8 @@
         <div class="harassment-stat">32% of women in leadership positions report having experienced sexual harassment that impacted their career advancement (World Bank, 2021).</div>
         <div class="societal-expectations">Globally, women leave the workforce at 4x the rate of men following childbirth, with 43% not returning within 10 years (World Bank, 2022).</div>
         <div class="reflection">In Kenya, Maya's industry has plenty of women at entry-level, but her company's executive team remains exclusively male. After having a child, she finds herself on a "mommy track" with fewer advancement opportunities, while fathers in her company receive promotions at higher rates.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon active">👩</span>
-          <span class="figure-icon">👩</span>
-          <span class="figure-icon">👩</span>
-        </div>
         <div class="financial-label">20% achieve full financial equity</div>
+         <script> updateChartGirl(20); </script>
       </div>
     </div>
   </div>
@@ -178,7 +117,9 @@
   <!-- MALE JOURNEY -->
   <div class="journey-column male">
     <div class="column-header">Noah's Journey</div>
-    
+     <div class="chart-containerBoy" id="chartContainerBoy">
+            <!-- Charts will be generated here -->
+       </div>
     <div class="stage">
       <div class="circle">Birth</div>
       <div class="stage-info">
@@ -186,19 +127,8 @@
         <div class="narrative">From his earliest days, subtle societal advantages begin to accumulate. In many societies, simply being born male means greater access to resources and opportunities.</div>
         <div class="stat">Higher rates of under-5 survival in most regions. Sex ratio at birth favors males in many regions.</div>
         <div class="reflection">In parts of South Asia, Noah's birth is celebrated with special ceremonies and gifts—traditions not always extended to newborn girls.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-        </div>
         <div class="financial-label">100% potential for financial independence</div>
+         <script> updateChartBoy(100); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -211,19 +141,8 @@
         <div class="stat"><a href="https://genderdata.worldbank.org/indicators/se-prm-cmpt-ma-zs" target="_blank">Primary completion rate for boys globally: 89.0% (World Bank, 2020)</a>.</div>
         <div class="dropoff">Drop-off: <a href="https://genderdata.worldbank.org/topics/education/" target="_blank">Child labor affects 11.2% of boys ages 7-14 vs. 7.8% of girls globally</a>.</div>
         <div class="reflection">In rural Ethiopia, when times get tough, Noah's family keeps him in school while his sister stays home to help. "He'll need to support a family someday," his parents explain.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon">👦</span>
-          <span class="figure-icon">👦</span>
-        </div>
         <div class="financial-label">80% on track for financial independence</div>
+         <script> updateChartBoy(80); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -236,19 +155,8 @@
         <div class="stat"><a href="https://genderdata.worldbank.org/indicators/se-sec-cuat-up-ma-zs" target="_blank">Secondary completion rate for boys globally: 76.5% (World Bank, 2020)</a>.</div>
         <div class="dropoff">Drop-off: Lower retention rates than girls in 73% of middle and high-income countries.</div>
         <div class="reflection">In Mexico, Noah struggles with math but is encouraged to persevere because "boys are naturally good at math." The teacher invests extra time helping him improve.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon active">👦</span>
-          <span class="figure-icon">👦</span>
-          <span class="figure-icon">👦</span>
-          <span class="figure-icon">👦</span>
-        </div>
         <div class="financial-label">70% on track for financial independence</div>
+         <script> updateChartBoy(70); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -262,19 +170,8 @@
         <div class="dropoff">Drop-off: Men are less likely to complete tertiary education in 105 countries.</div>
         <div class="pay-gap">Field advantage: Men make up 65% of STEM students, leading to 26% higher earning potential.</div>
         <div class="reflection">In Germany, Noah's engineering program is 80% male. He benefits from numerous same-gender mentors and industry connections, never questioning if he belongs in the field.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-        </div>
         <div class="financial-label">60% on track for financial independence</div>
+         <script> updateChartBoy(60); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -289,19 +186,8 @@
         <div class="pay-gap">Wage premium: Men earn on average 16% more than women in entry-level positions.</div>
         <div class="societal-expectations">Men spend <a href="https://genderdata.worldbank.org/topics/unpaid-care-and-domestic-work/" target="_blank">1-2 hours daily on household tasks vs. 3-6 hours for women</a> (World Bank Gender Data), allowing more time for career advancement.</div>
         <div class="reflection">In Japan, Noah is viewed as a "long-term investment" by his company. He regularly joins senior colleagues for after-hours socializing that builds valuable connections, with no expectation to rush home for family responsibilities.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-        </div>
         <div class="financial-label">60% achieve financial independence</div>
+         <script> updateChartBoy(60); </script>
       </div>
     </div>
     <span class="arrow">↓</span>
@@ -316,19 +202,8 @@
         <div class="pay-gap">Men earn 20-28% more than women at equivalent career levels, widening with seniority.</div>
         <div class="societal-expectations">Fathers see a <a href="https://genderdata.worldbank.org/topics/economic-opportunity/" target="_blank">6% average increase in earnings after having children, while mothers experience an average 4% decrease</a> (World Bank, 2021).</div>
         <div class="reflection">In the UAE, Noah's assertive communication style is labeled "leadership potential," while the same behavior from female colleagues is often deemed "too aggressive." After becoming a father, colleagues congratulate him and senior leaders begin mentoring him for executive roles.</div>
-        <div class="figures-container">
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon active">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-          <span class="figure-icon">👨</span>
-        </div>
-        <div class="financial-label">50% achieve full financial equity</div>
+        <div class="financial-label">60% achieve full financial equity</div>
+         <script> updateChartBoy(60); </script>
       </div>
     </div>
   </div>
