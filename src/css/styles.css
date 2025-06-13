@@ -13,6 +13,7 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
   flex: 1;
   padding: 15px;
   border-radius: 10px;
+  position: relative; /* Add this line */
 }
 
 .journey-column.female {
@@ -32,6 +33,11 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 2px solid #ddd;
+  position: sticky; /* Add sticky positioning */
+  top: 0; /* Stick to the top */
+  z-index: 10; /* Ensure it is above other content */
+  background-color: #fff; /* Or match your page background */
+  padding: 10px 0; /* Adjust padding */
 }
 
 .male .column-header {
@@ -43,7 +49,13 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
 }
 
 /* Existing styles with minor modifications */
-.stage { display: flex; align-items: center; margin-bottom: 30px; }
+.stage { 
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 30px; 
+  position: relative; /* Add this line */
+  z-index: 8; /* Ensure stage content is above other elements */
+}
 
 .circle { 
   width: 80px; 
@@ -55,6 +67,10 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
   justify-content: center; 
   font-size: 1.2em; 
   margin-right: 20px; 
+  background: linear-gradient(135deg, #ff69b4, #9370db);
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
 }
 
 .male .circle { background: palevioletred; }
@@ -66,6 +82,7 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
   border-radius: 8px; 
   box-shadow: 0 2px 6px rgba(0,0,0,0.07); 
   flex: 1; 
+  font-size: 16px;
 }
 
 .dropoff { font-weight: bold; margin-top: 5px; }
@@ -76,11 +93,17 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
 .highlight { color: #d62828; font-weight: bold; }
 
 .arrow { 
-  font-size: 2em; 
-  margin: 0 10px; 
-  color: #bbb; 
-  display: block; 
+  color: #999;
+  font-size: 24px;
+  margin: 15px 0;
+  display: block;
   text-align: center;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
 }
 
 h1 { text-align: center; margin-bottom: 10px; }
@@ -556,23 +579,126 @@ h1 { text-align: center; margin-bottom: 10px; }
   z-index: 150;
   width: max-content;
 }
+#next-button-container {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  /* Keep the other existing properties */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 150;
+  width: max-content;
+}
 
 .common-next-button {
-  padding: 10px 25px;
-  background-color: #e6df51;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #69adff, #5f8dc9);
   color: white;
   border: none;
+  border-radius: 30px;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(105, 173, 255, 0.3);
 }
 
 .common-next-button:hover {
-  background-color: #5ac5e0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(105, 173, 255, 0.4);
 }
 
 .common-next-button::after {
   content: "→";
   margin-left: 8px;
   font-size: 1.2em;
+}
+
+.girl-silhouette:hover, .boy-silhouette:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+/* Navigation dots styles */
+.navigation-dots {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.navigation-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.navigation-dot.active {
+  background-color: #ff69b4;
+  transform: scale(1.3);
+}
+
+/* Add these styles to fix the scrolling issue */
+.journey-column {
+  position: relative;
+}
+
+.column-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff; /* Or match your page background */
+  padding: 10px 0;
+}
+
+/* Add these styles for the intro typing effect */
+
+.story-intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1000;
+  transition: opacity 0.8s ease-in-out, visibility 0.8s;
+  overflow-y: auto; /* Allow scrolling if content is too tall */
+}
+
+.intro-headers {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.fixed-headers {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+.story-intro {
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Make sure content is initially hidden */
+.content-hidden {
+  display: none;
 }

@@ -97,7 +97,7 @@ function updateChartBoy(percent = 100) {
     fill.className = 'boy-fill';
     fill.style.setProperty('--target-inset', `${100 - clampedPercentage}%`);
     fill.innerHTML = createBoySVG();
-    fill.querySelector('svg path').style.fill = 'rgb(193, 52, 198)';
+    fill.querySelector('svg path').style.fill = 'palevioletred';
     fill.querySelector('svg path').style.stroke = 'none';
 
     // Add animation class
@@ -136,24 +136,12 @@ function addNextButtons() {
   // Create a container for the common next button
   const nextButtonContainer = document.createElement('div');
   nextButtonContainer.id = 'next-button-container';
-  nextButtonContainer.style.textAlign = 'center';
-  nextButtonContainer.style.margin = '20px 0';
-  nextButtonContainer.style.padding = '10px';
-  nextButtonContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-  nextButtonContainer.style.borderRadius = '10px';
-  nextButtonContainer.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
   nextButtonContainer.style.zIndex = '150';
   
   // Create common next button
   const commonNextButton = document.createElement('button');
   commonNextButton.className = 'common-next-button';
   commonNextButton.textContent = 'Next Stage';
-  commonNextButton.style.padding = '10px 25px';
-  commonNextButton.style.backgroundColor = '#ff69b4';
-  commonNextButton.style.color = 'white';
-  commonNextButton.style.border = 'none';
-  commonNextButton.style.borderRadius = '20px';
-  commonNextButton.style.fontWeight = 'bold';
   commonNextButton.style.cursor = 'pointer';
   
   nextButtonContainer.appendChild(commonNextButton);
@@ -220,10 +208,18 @@ function addNextButtons() {
     // Update active stages
     updateActiveStages(currentStageIndex);
     
-    // Scroll to the female stage
-    femaleStages[currentStageIndex].scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    // Scroll to the female stage and center it with some offset from the top
+    const stageRect = femaleStages[currentStageIndex].getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const viewportHeight = window.innerHeight;
+    const offset = 80; // leave 80px from top
+
+    // Calculate the scroll position to center the stage with offset
+    const scrollTo = stageRect.top + scrollY - (viewportHeight / 3) + (stageRect.height / 3) - offset;
+
+    window.scrollTo({
+      top: scrollTo,
+      behavior: 'smooth'
     });
     
     // Update the GIRL chart based on the female journey percentage
@@ -260,6 +256,102 @@ function addNextButtons() {
 // Make sure to call this function when the document is ready
 document.addEventListener('DOMContentLoaded', function() {
   addNextButtons();
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const introText = [
+    "Imagine two children born on the same day in the same hospital. Both enter the world with infinite potential. Yet, as they grow, their paths diverge in subtle but significant ways—not because of their abilities, but because of their gender. This is the story of Maya and Noah, representing millions of girls and boys around the world whose life trajectories are shaped by systemic gender disparities.",
+    "This visualization traces their parallel journeys from birth to career, showing how educational opportunities translate into economic outcomes. Every step reveals how small gaps in childhood widen into significant divides in adulthood."
+  ];
+  
+  const typingContainer = document.getElementById('typing-intro');
+  const startJourneyBtn = document.getElementById('start-journey-btn');
+  const introContainer = document.getElementById('intro-container');
+  
+  typingContainer.innerHTML = ''; // Clear any existing content
+  
+  let paragraphIndex = 0;
+  let charIndex = 0;
+  let currentParagraph = document.createElement('p');
+  typingContainer.appendChild(currentParagraph);
+  currentParagraph.classList.add('typing-text');
+  
+  const typingSpeed = 30; // milliseconds per character
+  const paragraphPause = 700; // pause between paragraphs
+  
+  function typeText() {
+    if (paragraphIndex < introText.length) {
+      if (charIndex < introText[paragraphIndex].length) {
+        currentParagraph.innerHTML += introText[paragraphIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeText, typingSpeed);
+      } else {
+        // Paragraph complete, start new paragraph after pause
+        paragraphIndex++;
+        charIndex = 0;
+        
+        if (paragraphIndex < introText.length) {
+          setTimeout(() => {
+            currentParagraph = document.createElement('p');
+            currentParagraph.classList.add('typing-text');
+            typingContainer.appendChild(currentParagraph);
+            typeText();
+          }, paragraphPause);
+        } else {
+          // All paragraphs complete, show the start journey button
+          setTimeout(() => {
+            startJourneyBtn.classList.add('visible');
+          }, 500);
+        }
+      }
+    }
+  }
+  
+  // Add cursor element
+  const cursor = document.createElement('span');
+  cursor.className = 'typing-cursor';
+  cursor.innerHTML = '|';
+  typingContainer.appendChild(cursor);
+  
+  // Start typing animation after a short delay
+  setTimeout(typeText, 500);
+  
+  // Add click handler for start journey button
+  startJourneyBtn.addEventListener('click', function() {
+    // Fade out the intro container
+    introContainer.style.opacity = '0';
+    introContainer.style.visibility = 'hidden';
+    
+    // Show the content and fixed headers
+    document.querySelectorAll('.content-hidden').forEach(element => {
+      element.classList.remove('content-hidden');
+    });
+    
+    // Remove intro container after animation completes
+    setTimeout(() => {
+      introContainer.remove();
+      
+      // Initialize the journey UI
+      const allStages = document.querySelectorAll('.stage');
+      allStages.forEach((stage, index) => {
+        if (index === 0) {
+          stage.classList.add('active-stage');
+        }
+      });
+      
+      // Add the next button
+      addNextButtons();
+      
+      // Initial chart update
+      if (typeof updateChartGirl === 'function') updateChartGirl(100);
+      if (typeof updateChartBoy === 'function') updateChartBoy(100);
+      
+      // Scroll to beginning of journey
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 800);
+  });
 });
 // Ensure we call this function when the document is ready
 document.addEventListener('DOMContentLoaded', function() {
