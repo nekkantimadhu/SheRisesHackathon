@@ -126,137 +126,6 @@ function updateChartBoy(percent = 100) {
     barItem.appendChild(categoryLabel);
     container.appendChild(barItem);
 }
-// Updated next button positioning and styling
-function addNextButtons() {
-  // Remove existing arrows
-  document.querySelectorAll('.arrow').forEach(arrow => {
-    arrow.remove();
-  });
-  
-  // Create a container for the common next button
-  const nextButtonContainer = document.createElement('div');
-  nextButtonContainer.id = 'next-button-container';
-  nextButtonContainer.style.zIndex = '150';
-  
-  // Create common next button
-  const commonNextButton = document.createElement('button');
-  commonNextButton.className = 'common-next-button';
-  commonNextButton.textContent = 'Next Stage';
-  commonNextButton.style.cursor = 'pointer';
-  
-  nextButtonContainer.appendChild(commonNextButton);
-  document.body.appendChild(nextButtonContainer);
-  
-  // Get separate stages for female and male journeys
-  const femaleStages = document.querySelector('.journey-column.female').querySelectorAll('.stage');
-  const maleStages = document.querySelector('.journey-column.male').querySelectorAll('.stage');
-  
-  // Determine how many stages to show (use the minimum count between male/female)
-  const stageCount = Math.min(femaleStages.length, maleStages.length);
-  let currentStageIndex = 0;
-  
-  // Function to update active stages
-  function updateActiveStages(index) {
-    // Remove active class from all stages
-    femaleStages.forEach(stage => stage.classList.remove('active-stage'));
-    maleStages.forEach(stage => stage.classList.remove('active-stage'));
-    
-    // Add active class to the current pair of stages
-    if (index < femaleStages.length) {
-      femaleStages[index].classList.add('active-stage');
-    }
-    
-    if (index < maleStages.length) {
-      maleStages[index].classList.add('active-stage');
-    }
-    
-    // Position the next button after the active female stage
-    positionNextButton();
-  }
-  
-  // Function to position the next button after the active stages
-  function positionNextButton() {
-    const activeStage = document.querySelector('.female .active-stage');
-    
-    if (activeStage) {
-      const stageRect = activeStage.getBoundingClientRect();
-      const scrollY = window.scrollY || window.pageYOffset;
-      const journeyContainer = document.querySelector('.journey-container');
-      const containerRect = journeyContainer.getBoundingClientRect();
-      
-      // Position the button after the active stage and center it relative to the container
-      nextButtonContainer.style.top = (stageRect.bottom + scrollY + 20) + 'px';
-      
-      // Remove inline styles that might conflict with the CSS
-      nextButtonContainer.style.margin = '';
-      nextButtonContainer.style.padding = '';
-      nextButtonContainer.style.backgroundColor = '';
-      nextButtonContainer.style.borderRadius = '';
-      nextButtonContainer.style.boxShadow = '';
-      nextButtonContainer.style.zIndex = '';
-    }
-  }
-  
-  // Initial activation of first stage
-  updateActiveStages(currentStageIndex);
-  
-  // Next button click handler
-  commonNextButton.addEventListener('click', function() {
-    // Move to next stage index, loop back to beginning if at end
-    currentStageIndex = (currentStageIndex + 1) % stageCount;
-    
-    // Update active stages
-    updateActiveStages(currentStageIndex);
-    
-    // Scroll to the female stage and center it with some offset from the top
-    const stageRect = femaleStages[currentStageIndex].getBoundingClientRect();
-    const scrollY = window.scrollY || window.pageYOffset;
-    const viewportHeight = window.innerHeight;
-    const offset = 80; // leave 80px from top
-
-    // Calculate the scroll position to center the stage with offset
-    const scrollTo = stageRect.top + scrollY - (viewportHeight / 3) + (stageRect.height / 3) - offset;
-
-    window.scrollTo({
-      top: scrollTo,
-      behavior: 'smooth'
-    });
-    
-    // Update the GIRL chart based on the female journey percentage
-    const girlPercentageText = femaleStages[currentStageIndex].querySelector('.financial-label')?.textContent;
-    if (girlPercentageText) {
-      const girlPercentMatch = girlPercentageText.match(/(\d+)%/);
-      if (girlPercentMatch && girlPercentMatch[1]) {
-        updateChartGirl(parseInt(girlPercentMatch[1]));
-      }
-    }
-    
-    // Update the BOY chart based on the male journey percentage
-    const boyPercentageText = maleStages[currentStageIndex].querySelector('.financial-label')?.textContent;
-    if (boyPercentageText) {
-      const boyPercentMatch = boyPercentageText.match(/(\d+)%/);
-      if (boyPercentMatch && boyPercentMatch[1]) {
-        updateChartBoy(parseInt(boyPercentMatch[1]));
-      }
-    }
-    
-    // Show/hide next button at the end
-    if (currentStageIndex === stageCount - 1) {
-      commonNextButton.textContent = 'Start Over';
-    } else {
-      commonNextButton.textContent = 'Next Stage';
-    }
-  });
-  
-  // Update button position when window is resized or scrolled
-  window.addEventListener('resize', positionNextButton);
-  window.addEventListener('scroll', positionNextButton);
-}
-
-// Make sure to call this function when the document is ready
-document.addEventListener('DOMContentLoaded', function() {
-  addNextButtons();
-});
 document.addEventListener('DOMContentLoaded', function() {
   const introText = [
     "Imagine two children born on the same day in the same hospital. Both enter the world with infinite potential. Yet, as they grow, their paths diverge in subtle but significant ways—not because of their abilities, but because of their gender. This is the story of Maya and Noah, representing millions of girls and boys around the world whose life trajectories are shaped by systemic gender disparities.",
@@ -328,22 +197,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Remove intro container after animation completes
     setTimeout(() => {
-      introContainer.remove();
-      
-      // Initialize the journey UI
       const allStages = document.querySelectorAll('.stage');
       allStages.forEach((stage, index) => {
         if (index === 0) {
           stage.classList.add('active-stage');
+        } else {
+          stage.classList.add('inactive-stage');
         }
       });
       
-      // Add the next button
-      addNextButtons();
-      
       // Initial chart update
-      if (typeof updateChartGirl === 'function') updateChartGirl(100);
-      if (typeof updateChartBoy === 'function') updateChartBoy(100);
+      if (typeof updateChartGirl === 'function') {
+        updateChartGirl(100);
+      }
+      if (typeof updateChartBoy === 'function') {
+        updateChartBoy(100);
+      }
       
       // Scroll to beginning of journey
       window.scrollTo({
@@ -363,11 +232,109 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Add the next button
-  addNextButtons();
-  
   // Initial chart update
   updateChartGirl(100);
   updateChartBoy(100);
 });
 
+// Function to initialize navigation
+function initializeNavigation() {
+  const navCircles = document.querySelectorAll('.nav-circle');
+  const femaleStages = document.querySelector('.journey-column.female').querySelectorAll('.stage');
+  const maleStages = document.querySelector('.journey-column.male').querySelectorAll('.stage');
+  
+  // Function to update active stage
+  function navigateToStage(stageIndex) {
+    // Update nav circles
+    navCircles.forEach((circle, index) => {
+      if (index === stageIndex) {
+        circle.classList.add('active');
+      } else {
+        circle.classList.remove('active');
+      }
+    });
+    
+    // Update female stages
+    femaleStages.forEach((stage, index) => {
+      if (index === stageIndex) {
+        stage.classList.add('active-stage');
+        stage.classList.remove('inactive-stage');
+      } else {
+        stage.classList.remove('active-stage');
+        stage.classList.add('inactive-stage');
+      }
+    });
+    
+    // Update male stages
+    maleStages.forEach((stage, index) => {
+      if (index === stageIndex) {
+        stage.classList.add('active-stage');
+        stage.classList.remove('inactive-stage');
+      } else {
+        stage.classList.remove('active-stage');
+        stage.classList.add('inactive-stage');
+      }
+    });
+    
+    // Update charts based on financial independence data
+    const femaleFinancialLabel = femaleStages[stageIndex].querySelector('.financial-label');
+    if (femaleFinancialLabel) {
+      const percentText = femaleFinancialLabel.textContent.match(/\d+/);
+      if (percentText) {
+        updateChartGirl(parseInt(percentText[0]));
+      }
+    }
+    
+    const maleFinancialLabel = maleStages[stageIndex].querySelector('.financial-label');
+    if (maleFinancialLabel) {
+      const percentText = maleFinancialLabel.textContent.match(/\d+/);
+      if (percentText) {
+        updateChartBoy(parseInt(percentText[0]));
+      }
+    }
+    
+    // Scroll to bring current stage into view
+    const currentStage = femaleStages[stageIndex];
+    currentStage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  
+  // Add click handlers to nav circles
+  navCircles.forEach((circle) => {
+    circle.addEventListener('click', function() {
+      const stageIndex = parseInt(this.getAttribute('data-stage'));
+      navigateToStage(stageIndex);
+    });
+  });
+  
+  // Initialize first stage
+  navigateToStage(0);
+}
+
+// Call the navigation initialization when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initializeNavigation, 1000);
+});
+
+// Function to match the height of the chart spacer with chart containers
+function matchChartSpacerHeight() {
+  const chartContainer = document.getElementById('chartContainer');
+  const chartContainerBoy = document.getElementById('chartContainerBoy');
+  const chartSpacer = document.querySelector('.chart-spacer');
+  
+  if (chartContainer && chartContainerBoy && chartSpacer) {
+    const femaleHeight = chartContainer.offsetHeight;
+    const maleHeight = chartContainerBoy.offsetHeight;
+    const maxHeight = Math.max(femaleHeight, maleHeight);
+    
+    chartSpacer.style.height = `${maxHeight}px`;
+  }
+}
+
+// Call this after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // This will run after your existing code
+  setTimeout(() => {
+    initializeNavigation();
+    window.addEventListener('resize', matchChartSpacerHeight);
+  }, 500);
+});

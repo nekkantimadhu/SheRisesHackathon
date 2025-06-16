@@ -18,12 +18,17 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
 
 .journey-column.female {
   background-color: rgba(219, 112, 147, 0.05);
-  border-left: 4px solid palevioletred;
+  border-right: 4px solid steelblue;
+   border-left: 4px solid steelblue;
+  
+  
 }
 
 .journey-column.male {
   background-color: rgba(70, 130, 180, 0.05);
-  border-left: 4px solid steelblue;
+  border-left: 4px solid palevioletred;
+  border-right: 4px solid palevioletred;
+
 }
 
 /* Column headers */
@@ -57,25 +62,6 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
   z-index: 8; /* Ensure stage content is above other elements */
 }
 
-.circle { 
-  width: 80px; 
-  height: 60px; 
-  border-radius: 12px; 
-  color: #fff; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  font-size: 1.2em; 
-  margin-right: 20px; 
-  background: linear-gradient(135deg, #ff69b4, #9370db);
-  color: white;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-.male .circle { background: palevioletred; }
-.female .circle { background: steelblue; }
-
 .stage-info { 
   background: #fff; 
   padding: 15px; 
@@ -92,14 +78,6 @@ body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 
 .stat { color: #555; margin-top: 8px; font-style: italic; }
 .highlight { color: #d62828; font-weight: bold; }
 
-.arrow { 
-  color: #999;
-  font-size: 24px;
-  margin: 15px 0;
-  display: block;
-  text-align: center;
-  animation: bounce 2s infinite;
-}
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
@@ -701,4 +679,220 @@ h1 { text-align: center; margin-bottom: 10px; }
 /* Make sure content is initially hidden */
 .content-hidden {
   display: none;
+}
+
+/* Set consistent height for all journey stages */
+.journey-column .stage {
+  height: 450px; /* You can adjust this value based on your content needs */
+  overflow-y: auto; /* Allows scrolling if content exceeds height */
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.journey-column .stage-headers {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.journey-column .stage-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-right: 10px; /* Add some padding for the scrollbar */
+}
+
+/* Optional: Add a subtle scrollbar styling */
+.journey-column .stage-info::-webkit-scrollbar {
+  width: 6px;
+}
+
+.journey-column .stage-info::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+    .journey-column.stage-headers .stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 110px;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: center;
+      background: #f7f7f7;
+      border-radius: 8px;
+      margin: 10px 0;
+      min-height: 70px;
+    }
+
+.chart-spacer {
+  width: 100%;
+  height: 200px; /* Base height that will be adjusted with JS */
+  background-color: transparent;
+  border-radius: 8px;
+}
+
+.center-column {
+    width: 200px; /* Adjust the width as needed */
+    background-color: #f8f9fa; /* Light background color */
+    border: 1px solid #dee2e6; /* Border to define the edges */
+    padding: 10px; /* Padding for inner spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for depth */
+
+}
+
+/* Central navigation column */
+.journey-column.stage-headers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 150px;
+  min-width: 120px;
+  background: linear-gradient(to bottom, rgba(248,248,248,0.8), rgba(240,240,240,0.8));
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  padding: 15px 5px;
+}
+
+/* Navigation alignment adjustments */
+.journey-column.stage-headers {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+/* Navigation container for better positioning */
+.nav-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px; /* Space for the header */
+}
+
+/* Stage-specific positioning adjustments */
+.nav-stage-container {
+  position: relative;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+/* Position the navigation circle at the top of container */
+.nav-circle {
+  margin: 0;
+  position: relative;
+  top: 0;
+}
+
+/* Adjust the spacing for the navigation container */
+.nav-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 320px; /* Increased from 50px to align with first stage */
+}
+
+/* Enhanced Navigation Styling */
+.nav-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9f47e8, #af84c0);
+  filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  margin: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 5;
+  border: 2px solid rgba(255,255,255,0.8);
+}
+
+.nav-label {
+  font-size: 14px;
+  padding: 0 5px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.nav-circle:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  background: linear-gradient(135deg, #a8c0ff, #c2e9fb);
+  color: #333;
+}
+
+.nav-circle:hover .nav-label {
+  font-weight: 700;
+}
+
+/* Active state */
+.nav-circle.active, .start-journey-btn {
+  background: linear-gradient(135deg, #9f47e8, #af84c0);
+  color: white;
+  transform: scale(1.15);
+  box-shadow: 0 8px 24px rgba(174, 91, 229, 0.4), 0 0 0 5px rgba(91,134,229,0.1);
+  border: 2px solid white;
+   filter: blur(0);
+}
+
+.nav-circle.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate 4s linear infinite;
+  z-index: -1;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Container and arrow styling */
+.journey-column.stage-headers {
+  background: linear-gradient(to bottom, rgba(250,250,250,0.9), rgba(245,245,245,0.9));
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 15px 5px;
+}
+
+/* Add a nice transition for active stage selection */
+.stage {
+  transition: opacity 0.5s ease, filter 0.5s ease;
 }
