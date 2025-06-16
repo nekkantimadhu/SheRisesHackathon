@@ -683,8 +683,6 @@ h1 { text-align: center; margin-bottom: 10px; }
 
 /* Set consistent height for all journey stages */
 .journey-column .stage {
-  height: 400px; /* You can adjust this value based on your content needs */
-  overflow-y: auto; /* Allows scrolling if content exceeds height */
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -780,20 +778,20 @@ h1 { text-align: center; margin-bottom: 10px; }
 /* Stage-specific positioning adjustments */
 .nav-stage-container {
   position: relative;
-  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  transition: height 0.3s ease;
   padding: 20px 0;
   box-sizing: border-box;
 }
 
-/* Position the navigation circle at the top of container */
+/* Keep the navigation circles and arrows positioned properly */
 .nav-circle {
-  margin: 0;
   position: relative;
   top: 0;
+  margin: 0;
 }
 
 /* Adjust the spacing for the navigation container */

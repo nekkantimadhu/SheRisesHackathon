@@ -56,11 +56,18 @@ function updateChartGirl(percent = 100) {
     silhouette.appendChild(fill);
 
     const percentLabel = document.createElement('div');
-
+    percentLabel.className = 'percent-label';
+    percentLabel.textContent = `${clampedPercentage}%`;
+    percentLabel.style.textAlign = 'center';
+    percentLabel.style.fontWeight = 'bold';
+    percentLabel.style.marginTop = '10px';
+    percentLabel.style.color = 'rgb(40, 65, 124)';
+    
     const categoryLabel = document.createElement('div');
     categoryLabel.className = 'category-label';
 
     barItem.appendChild(silhouette);
+    barItem.appendChild(percentLabel); // Add the percent label
     barItem.appendChild(categoryLabel);
     container.appendChild(barItem);
 }
@@ -118,11 +125,18 @@ function updateChartBoy(percent = 100) {
     silhouette.appendChild(fill);
 
     const percentLabel = document.createElement('div');
-
+    percentLabel.className = 'percent-label';
+    percentLabel.textContent = `${clampedPercentage}%`;
+    percentLabel.style.textAlign = 'center';
+    percentLabel.style.fontWeight = 'bold';
+    percentLabel.style.marginTop = '10px';
+    percentLabel.style.color = 'palevioletred';
+    
     const categoryLabel = document.createElement('div');
     categoryLabel.className = 'category-label-boy';
 
     barItem.appendChild(silhouette);
+    barItem.appendChild(percentLabel); // Add the percent label
     barItem.appendChild(categoryLabel);
     container.appendChild(barItem);
 }
@@ -330,11 +344,245 @@ function matchChartSpacerHeight() {
   }
 }
 
+// Function to dynamically match heights between navigation and stages
+function matchStageHeights() {
+  const femaleStages = document.querySelector('.journey-column.female').querySelectorAll('.stage');
+  const maleStages = document.querySelector('.journey-column.male').querySelectorAll('.stage');
+  const navContainers = document.querySelectorAll('.nav-stage-container');
+  
+  // Only proceed if all elements are present
+  if (!femaleStages.length || !maleStages.length || !navContainers.length) return;
+  
+  // Process each stage pair
+  for (let i = 0; i < femaleStages.length; i++) {
+      // Get heights of female and male stages
+      const femaleHeight = femaleStages[i].offsetHeight;
+      const maleHeight = maleStages[i].offsetHeight;
+      console.log(`Matching heights for stage ${femaleHeight} and ${maleHeight}`);
+      
+      // Use the maximum height for the navigation container
+      const maxHeight = Math.max(femaleHeight, maleHeight);
+      
+      // Set the height of the navigation container
+      navContainers[i].style.height = `${maxHeight}px`;
+      femaleStages[i].style.height = `${maxHeight}px`;
+      maleStages[i].style.height = `${maxHeight}px`;
+  }
+}
+
+// Update the DOM content loaded event handler
+document.addEventListener('DOMContentLoaded', function() {
+  // Ensure content is visible first
+  setTimeout(() => {
+    document.querySelectorAll('.content-hidden').forEach(element => {
+      element.classList.remove('content-hidden');
+    });
+    
+    // Wait a bit longer for content to render
+    setTimeout(() => {
+      initializeNavigation();
+      
+      // Retry height matching with multiple attempts
+      retryMatchStageHeights();
+      
+      // Setup resize handler
+      window.addEventListener('resize', () => {
+        matchChartSpacerHeight();
+        matchStageHeights();
+      });
+      
+      // Initialize scroll navigation
+      initScrollNavigation();
+    }, 500);
+  }, 800);
+});
+
+// Add this function to handle scroll-based navigation
+function initScrollNavigation() {
+  const femaleStages = document.querySelector('.journey-column.female').querySelectorAll('.stage');
+  const navCircles = document.querySelectorAll('.nav-circle');
+  
+  // Create options for the observer
+  const options = {
+    root: null, // viewport is the root
+    rootMargin: '0px',
+    threshold: 0.6 // trigger when 60% of the element is visible
+  };
+  
+  // Keep track of currently active section to avoid unnecessary updates
+  let currentActiveIndex = 0;
+  
+  // Create the observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Find which stage was intersected
+        const targetStage = entry.target;
+        const stageIndex = Array.from(femaleStages).indexOf(targetStage);
+        
+        // Only update if it's a different section
+        if (stageIndex !== currentActiveIndex) {
+          currentActiveIndex = stageIndex;
+          
+          // Update the navigation without scrolling (to avoid loops)
+          updateNavigationOnly(stageIndex);
+        }
+      }
+    });
+  }, options);
+  
+  // Observe all stage elements
+  femaleStages.forEach(stage => {
+    observer.observe(stage);
+  });
+  
+  // Function to update navigation only (without scrolling)
+  function updateNavigationOnly(stageIndex) {
+    // Update nav circles
+    navCircles.forEach((circle, index) => {
+      if (index === stageIndex) {
+        circle.classList.add('active');
+      } else {
+        circle.classList.remove('active');
+      }
+    });
+    
+    // Update female stages
+    femaleStages.forEach((stage, index) => {
+      if (index === stageIndex) {
+        stage.classList.add('active-stage');
+        stage.classList.remove('inactive-stage');
+      } else {
+        stage.classList.remove('active-stage');
+        stage.classList.add('inactive-stage');
+      }
+    });
+    
+    // Update male stages
+    const maleStages = document.querySelector('.journey-column.male').querySelectorAll('.stage');
+    maleStages.forEach((stage, index) => {
+      if (index === stageIndex) {
+        stage.classList.add('active-stage');
+        stage.classList.remove('inactive-stage');
+      } else {
+        stage.classList.remove('active-stage');
+        stage.classList.add('inactive-stage');
+      }
+    });
+    
+    // Update charts based on financial independence data
+    const femaleFinancialLabel = femaleStages[stageIndex].querySelector('.financial-label');
+    if (femaleFinancialLabel) {
+      const percentText = femaleFinancialLabel.textContent.match(/\d+/);
+      if (percentText) {
+        updateChartGirl(parseInt(percentText[0]));
+      }
+    }
+    
+    const maleFinancialLabel = maleStages[stageIndex].querySelector('.financial-label');
+    if (maleFinancialLabel) {
+      const percentText = maleFinancialLabel.textContent.match(/\d+/);
+      if (percentText) {
+        updateChartBoy(parseInt(percentText[0]));
+      }
+    }
+  }
+}
+
+// Initialize scroll navigation after a delay
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(initScrollNavigation, 1000);
+});
+
+// Add this to your code for more reliable height detection
+function setupResizeObservers() {
+  // Check if ResizeObserver is available
+  if (typeof ResizeObserver !== 'undefined') {
+    const resizeObserver = new ResizeObserver((entries) => {
+      // When any observed element changes size
+      matchChartSpacerHeight();
+      matchStageHeights();
+    });
+    
+    // Observe the stage containers
+    document.querySelectorAll('.journey-column .stage').forEach(stage => {
+      resizeObserver.observe(stage);
+    });
+    
+    // Also observe chart containers
+    const chartContainer = document.getElementById('chartContainer');
+    const chartContainerBoy = document.getElementById('chartContainerBoy');
+    if (chartContainer) resizeObserver.observe(chartContainer);
+    if (chartContainerBoy) resizeObserver.observe(chartContainerBoy);
+  }
+}
+
 // Call this after DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-  // This will run after your existing code
-  setTimeout(() => {
-    initializeNavigation();
-    window.addEventListener('resize', matchChartSpacerHeight);
-  }, 500);
+  setTimeout(setupResizeObservers, 1000);
+});
+
+// Function to align navigation circles with the centers of female stages
+function alignNavWithStages() {
+  const femaleStages = document.querySelectorAll('.journey-column.female .stage');
+  const navCircles = document.querySelectorAll('.nav-circle');
+  const navStageContainers = document.querySelectorAll('.nav-stage-container');
+  const navContainer = document.querySelector('.nav-container');
+  
+  // Only proceed if we have the necessary elements
+  if (!femaleStages.length || !navCircles.length || !navContainer) return;
+  
+  // Get the top offset of the female journey column
+  const femaleColumn = document.querySelector('.journey-column.female');
+  const femaleTop = femaleColumn.getBoundingClientRect().top;
+  const headerHeight = document.querySelector('.column-header')?.offsetHeight || 0;
+  const chartHeight = document.getElementById('chartContainer')?.offsetHeight || 0;
+  
+  // Set top padding to match chart spacing
+  navContainer.style.paddingTop = `${chartHeight + headerHeight}px`;
+  
+  // Position each nav circle to match center of corresponding stage
+  femaleStages.forEach((stage, index) => {
+    if (index < navStageContainers.length) {
+      // Get vertical center position of the female stage
+      const stageRect = stage.getBoundingClientRect();
+      const stageCenter = stageRect.top + stageRect.height / 2 - femaleTop;
+      
+      // Get the nav container and its circle
+      const navContainer = navStageContainers[index];
+      const navCircle = navContainer.querySelector('.nav-circle');
+      
+      // Position the nav container so its circle aligns with stage center
+      if (navCircle) {
+        const navCircleRect = navCircle.getBoundingClientRect();
+        const navCircleHeight = navCircleRect.height;
+        
+        // Calculate the top position for the nav container
+        navContainer.style.position = 'absolute';
+        navContainer.style.top = `${stageCenter - navCircleHeight/2}px`;
+        
+        // Remove any height restriction
+        navContainer.style.height = 'auto';
+      }
+    }
+  });
+}
+
+// Call on load and when window resizes
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait for content to render fully
+  setTimeout(alignNavWithStages, 500);
+  window.addEventListener('resize', alignNavWithStages);
+  
+  // Use ResizeObserver to detect content changes
+  if (typeof ResizeObserver !== 'undefined') {
+    const resizeObserver = new ResizeObserver(() => {
+      alignNavWithStages();
+    });
+    
+    // Observe elements that might change size
+    document.querySelectorAll('.stage, .chart-container').forEach(el => {
+      resizeObserver.observe(el);
+    });
+  }
 });
