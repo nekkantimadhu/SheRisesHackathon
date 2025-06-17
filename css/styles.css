@@ -166,6 +166,17 @@ h1 { text-align: center; margin-bottom: 10px; }
   box-shadow: 0 2px 6px rgba(0,0,0,0.07);
 }
 
+/* Add these styles to hide the conclusion initially */
+.journey-conclusion {
+  display: none; /* Initially hide the conclusion */
+  animation: fadeIn 0.8s ease-in-out when shown;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .call-to-action {
   font-weight: bold;
   text-align: center;
@@ -893,4 +904,231 @@ h1 { text-align: center; margin-bottom: 10px; }
 /* Add a nice transition for active stage selection */
 .stage {
   transition: opacity 0.5s ease, filter 0.5s ease;
+}
+
+.action-steps {
+  margin-top: 30px;
+  background-color: rgba(91, 134, 229, 0.1);
+  border-left: 4px solid #5b86e5;
+  padding: 20px;
+  border-radius: 0 8px 8px 0;
+}
+
+.action-steps h4 {
+  color: #4361ee;
+  margin-top: 0;
+}
+
+.action-steps ul {
+  padding-left: 20px;
+}
+
+.action-steps li {
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Ensure this container is always on top */
+.end-journey-button-container {
+  z-index: 2000;
+  position: relative;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.end-journey-btn {
+  background-color: #4a4a4a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.end-journey-btn:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+.end-journey-footer {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0 30px;
+  clear: both;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.end-journey-btn-large {
+  background-color: #5b86e5;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.end-journey-btn-large:hover {
+  background-color: #4a4a9c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Add these styles for the conclusion typewriter effects */
+.journey-conclusion {
+  display: none; /* Initially hidden until button is clicked */
+}
+
+.journey-conclusion p, 
+.journey-conclusion .call-to-action {
+  display: none; /* Hide all paragraphs initially */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.journey-conclusion p.visible, 
+.journey-conclusion .call-to-action.visible {
+  display: block; /* Show when visible class is added */
+}
+
+.journey-conclusion .action-steps {
+  display: none; /* Hide action steps initially */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.journey-conclusion .action-steps.visible {
+  display: block;
+}
+
+.next-paragraph-btn,
+.show-actions-btn {
+  background-color: #5b86e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 20px auto;
+  display: block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.next-paragraph-btn:hover,
+.show-actions-btn:hover {
+  background-color: #4a4a9c;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.typewriter-text {
+  border-right: 0.15em solid #5b86e5;
+  white-space: pre-wrap;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #5b86e5 }
+}
+
+/* Styling for the micro-actions note */
+.micro-actions-note {
+  margin-top: 40px;
+  padding: 25px;
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(248,248,255,0.9));
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-left: 4px solid #9f47e8;
+  position: relative;
+  overflow: hidden;
+}
+
+.micro-actions-note::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, #5b86e5, #ff69b4);
+}
+
+.micro-actions-note h4 {
+  color: #333;
+  margin-top: 0;
+  font-size: 1.3em;
+}
+
+.highlight-blue {
+  color: steelblue;
+  font-weight: bold;
+}
+
+.highlight-pink {
+  color: palevioletred;
+  font-weight: bold;
+}
+
+.closing-thought {
+  font-style: italic;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 20px;
+  color: #444;
+}
+
+/* Unified button styles for consistency */
+.show-actions-btn {
+  background-color: #5b86e5;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
+  margin: 30px auto;
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.show-actions-btn:hover {
+  background-color: #4a4a9c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Style for the end-journey-btn-large to match start-journey-btn */
+.end-journey-btn-large {
+  background-color: #5b86e5;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.end-journey-btn-large:hover {
+  background-color: #4a4a9c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }

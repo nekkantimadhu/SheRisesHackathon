@@ -358,7 +358,6 @@ function matchStageHeights() {
       // Get heights of female and male stages
       const femaleHeight = femaleStages[i].offsetHeight;
       const maleHeight = maleStages[i].offsetHeight;
-      console.log(`Matching heights for stage ${femaleHeight} and ${maleHeight}`);
       
       // Use the maximum height for the navigation container
       const maxHeight = Math.max(femaleHeight, maleHeight);
@@ -406,7 +405,7 @@ function initScrollNavigation() {
   const options = {
     root: null, // viewport is the root
     rootMargin: '0px',
-    threshold: 0.6 // trigger when 60% of the element is visible
+    threshold: 0.3 // trigger when 60% of the element is visible
   };
   
   // Keep track of currently active section to avoid unnecessary updates
@@ -534,12 +533,21 @@ function alignNavWithStages() {
   
   // Get the top offset of the female journey column
   const femaleColumn = document.querySelector('.journey-column.female');
+  const maleColumn = document.querySelector('.journey-column.male');
   const femaleTop = femaleColumn.getBoundingClientRect().top;
   const headerHeight = document.querySelector('.column-header')?.offsetHeight || 0;
   const chartHeight = document.getElementById('chartContainer')?.offsetHeight || 0;
   
   // Set top padding to match chart spacing
   navContainer.style.paddingTop = `${chartHeight + headerHeight}px`;
+  
+  // Get the total height of the female/male columns for matching
+  const femaleHeight = femaleColumn.offsetHeight;
+  const maleHeight = maleColumn.offsetHeight;
+  const columnHeight = Math.max(femaleHeight, maleHeight);
+  
+  // Set the minimum height of the nav container to match the columns
+  navContainer.style.minHeight = `${columnHeight - (chartHeight + headerHeight)}px`;
   
   // Position each nav circle to match center of corresponding stage
   femaleStages.forEach((stage, index) => {
@@ -586,3 +594,168 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Add end journey button functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Add end journey button functionality
+  const endJourneyBtn = document.getElementById('end-journey-btn');
+  if (endJourneyBtn) {
+    endJourneyBtn.addEventListener('click', function() {
+      // Hide all journey columns
+      const journeyColumns = document.querySelectorAll('.journey-column');
+      journeyColumns.forEach(column => {
+        column.style.display = 'none';
+      });
+      
+      // Show only the conclusion
+      const journeyConclusion = document.querySelector('.journey-conclusion');
+      if (journeyConclusion) {
+        journeyConclusion.style.display = 'block';
+        journeyConclusion.scrollIntoView({ behavior: 'smooth' });
+      }
+      
+      // Update any headers if needed
+      const fixedHeaders = document.querySelector('.fixed-headers');
+      if (fixedHeaders) {
+        fixedHeaders.querySelector('h2').textContent = 'Journey Conclusion';
+      }
+      
+      // Remove the button after clicking
+      this.remove();
+    });
+  }
+});
+
+// Updated skipToConclusion function with sequential typewriter effect
+function skipToConclusion() {
+  // Hide all journey columns
+  const journeyColumns = document.querySelectorAll('.journey-column');
+  journeyColumns.forEach(column => {
+    column.style.display = 'none';
+  });
+  
+  // Remove the end journey button from the page
+  const endJourneyBtn = document.getElementById('end-journey-btn');
+  if (endJourneyBtn) {
+    endJourneyBtn.remove();
+  }
+  
+  // Also remove the end-journey-footer if it exists
+  const endJourneyFooter = document.querySelector('.end-journey-footer');
+  if (endJourneyFooter) {
+    endJourneyFooter.remove();
+  }
+  
+  // Show the conclusion container
+  const journeyConclusion = document.querySelector('.journey-conclusion');
+  if (journeyConclusion) {
+    journeyConclusion.style.display = 'block';
+    journeyConclusion.scrollIntoView({ behavior: 'smooth' });
+    
+    // Hide all paragraphs initially
+    const paragraphs = journeyConclusion.querySelectorAll('p');
+    const callToAction = journeyConclusion.querySelector('.call-to-action');
+    const actionSteps = journeyConclusion.querySelector('.action-steps');
+    const microActionsNote = journeyConclusion.querySelector('.micro-actions-note');
+    const closingThought = journeyConclusion.querySelector('.closing-thought');
+    
+    paragraphs.forEach(p => { p.style.display = 'none'; });
+    if (callToAction) callToAction.style.display = 'none';
+    if (actionSteps) actionSteps.style.display = 'none';
+    if (microActionsNote) microActionsNote.style.display = 'none';
+    if (closingThought) closingThought.style.display = 'none';
+    
+    // Show only the title immediately
+    const title = journeyConclusion.querySelector('h3');
+    if (title) {
+      title.style.display = 'block';
+      
+      // Remove any existing keyboard hints
+      const existingHint = journeyConclusion.querySelector('.keyboard-hint');
+      if (existingHint) existingHint.remove();
+      
+      // Create array of elements to type
+      const elementsToType = [...paragraphs];
+      if (callToAction) elementsToType.push(callToAction);
+      
+      // Start sequential typewriter effect
+      sequentialTypewriter(elementsToType, 0, function() {
+        // After all paragraphs are typed, show action button
+        const actionButton = document.createElement('button');
+        actionButton.textContent = 'What we can do ?';
+        // Apply the same class as the initial journey button for consistent styling
+        actionButton.className = 'show-actions-btn start-journey-btn';
+        journeyConclusion.appendChild(actionButton);
+        
+        actionButton.addEventListener('click', function() {
+          if (actionSteps) {
+            actionSteps.style.display = 'block';
+            actionSteps.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            this.remove();
+          }
+        // After all paragraphs are typed, show action button
+        const actionButton2 = document.createElement('button');
+        actionButton2.textContent = 'Your Turn';
+        actionButton2.className = 'show-actions-btn start-journey-btn';
+        journeyConclusion.appendChild(actionButton2);
+
+        actionButton2.addEventListener('click', function() {
+          if (microActionsNote) {
+            microActionsNote.style.display = 'block';
+            microActionsNote.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          if (closingThought) {
+            closingThought.style.display = 'block';
+            closingThought.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          this.remove();
+        });
+        });
+      });
+    }
+  }
+  
+  // Update any headers if needed
+  const fixedHeaders = document.querySelector('.fixed-headers');
+  if (fixedHeaders) {
+    fixedHeaders.querySelector('h2').textContent = 'Journey Conclusion';
+  }
+
+}
+
+// Function to apply typewriter effect sequentially to multiple elements
+function sequentialTypewriter(elements, currentIndex, finalCallback) {
+  if (currentIndex >= elements.length) {
+    if (finalCallback) finalCallback();
+    return;
+  }
+  
+  const element = elements[currentIndex];
+  element.style.display = 'block';
+  
+  // Apply typewriter effect to current element
+  const text = element.textContent;
+  element.textContent = '';
+  element.classList.add('typewriter-text');
+  
+  let i = 0;
+  const speed = 20; // typing speed in milliseconds
+  
+  function typeWriter() {
+    if (i < text.length) {
+      element.textContent += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    } else {
+      // Remove the typewriter class when done
+      element.classList.remove('typewriter-text');
+      
+      // Short pause before starting the next element
+      setTimeout(() => {
+        sequentialTypewriter(elements, currentIndex + 1, finalCallback);
+      }, 500);
+    }
+  }
+  
+  typeWriter();
+}
