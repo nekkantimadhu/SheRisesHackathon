@@ -10,6 +10,12 @@
 <script src="js/comic-illustrations.js"></script>
 </head>
 <body>
+<!-- Home Image Hero Section -->
+<div class="home-hero">
+  <img src="assets/images/home.png" alt="Home" class="home-img" />
+  <button class="begin-btn" onclick="document.getElementById('live-dashboard').scrollIntoView({behavior:'smooth'})">Begin</button>
+</div>
+
 <!-- Navigation -->
 <nav class="navbar">
   <div class="nav-container">
@@ -27,46 +33,31 @@
 </nav>
 
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-icon">🎭</span>
-      <span class="badge-text">Storytelling for Change</span>
-    </div>
-    <h1 class="hero-title">Hack Our Story</h1>
-    <p class="hero-subtitle">Where Data Meets Narrative to Drive Gender Equality</p>
-    <div class="hero-description">
-      <p>Every number tells a story. Every statistic represents a life. Join us in transforming gender data into compelling narratives that inspire action and drive change.</p>
-    </div>
-    <button class="start-story-btn" onclick="beginStory()">🎬 Begin the Story</button>
-  </div>
-  <div class="hero-visual">
-    <div class="story-preview">
-      <div class="character-container">
-        <div class="character maya" id="maya-character">
-          <div class="character-icon">👩</div>
-          <div class="character-name">Maya</div>
-        </div>
-        <div class="character noah" id="noah-character">
-          <div class="character-icon">👨</div>
-          <div class="character-name">Noah</div>
-        </div>
+<!-- Minimal, Clean Hero Section -->
+<!-- <section class="hero-minimal">
+  <div class="hero-left">
+    <h1>Hack Our Story</h1>
+    <p class="subtitle">Live Gender Data. Real Change.</p>
+    <div class="live-data-group">
+      <div class="live-data-widget">
+        <div class="live-label">Child Marriages Today</div>
+        <div class="live-value" id="child-marriage-counter">0</div>
       </div>
-      <div class="story-progress">
-        <div class="progress-line">
-          <div class="progress-fill" id="story-progress"></div>
-        </div>
-        <div class="progress-labels">
-          <span>Birth</span>
-          <span>Education</span>
-          <span>Career</span>
-          <span>Leadership</span>
-        </div>
+      <div class="live-data-widget">
+        <div class="live-label">Crimes Against Women Today</div>
+        <div class="live-value" id="crime-counter">0</div>
       </div>
+      <div class="live-source">Source: UNICEF, World Bank, UN Women</div>
     </div>
+    <button class="start-btn" onclick="beginStory()">Begin the Story</button>
   </div>
-</section>
+  <div class="hero-right"> -->
+    <!-- 3D Model Embed: Replace with a Spline/Three.js Maya/Noah model for best context -->
+    <!-- Example: Spline demo human figure (replace with your own for full context) -->
+    <!-- <iframe src="https://my.spline.design/3dcharacter-6e7b2e5b8b7b2b7b2b7b2b7b2b7b2b7/" frameborder="0" width="400" height="400" style="border-radius: 1.5rem;"></iframe>
+    If you have a custom Maya/Noah 3D model, replace the src above with your own Spline/Three.js embed link. -->
+  <!-- </div>
+</section> -->
 
 
 <!-- Story Section -->
@@ -80,36 +71,37 @@
     <!-- Interactive Story Journey -->
     <div class="story-journey">
       <div class="journey-controls">
-        <button class="journey-btn active" data-stage="0">👶 Birth</button>
-        <button class="journey-btn" data-stage="1">📚 Education</button>
-        <button class="journey-btn" data-stage="2">💼 Career</button>
-        <button class="journey-btn" data-stage="3">👑 Leadership</button>
-        <button class="journey-btn" data-stage="4">🌟 Conclusion</button>
+        <button class="journey-btn active" data-stage="birth">👶 Birth</button>
+        <button class="journey-btn" data-stage="primary">🏫 Primary</button>
+        <button class="journey-btn" data-stage="secondary">🎒 Secondary</button>
+        <button class="journey-btn" data-stage="tertiary">🎓 Tertiary</button>
+        <button class="journey-btn" data-stage="firstjob">💼 First Job</button>
+        <button class="journey-btn" data-stage="career">🚀 Career</button>
       </div>
       
       <div class="journey-content">
-        <div class="story-stage active" id="birth-stage" data-stage="0">
+        <div class="story-stage active" id="birth-stage" data-stage="birth">
           <div class="illustration-container">
             <div class="boy-illustration"></div>
             <div class="girl-illustration"></div>
           </div>
           <div class="stage-visual">
             <canvas id="birthChart"></canvas>
-          </div>
+          </div> 
           <div class="stage-narrative">
-            <h3>The Beginning</h3>
+            <!-- <h3>The Beginning</h3> -->
             <div class="narrative-text">
-              <p>Maya and Noah enter the world with identical potential. But from the moment they take their first breath, subtle societal biases begin to shape their futures.</p>
+              <!-- <p>Maya and Noah enter the world with identical potential. But from the moment they take their first breath, subtle societal biases begin to shape their futures.</p> -->
               <div class="data-highlight">
-                <span class="highlight-number">111.8</span>
-                <span class="highlight-label">males per 100 females born in East Asia & Pacific</span>
+                <!-- <span class="highlight-number">111.8</span> -->
+                <!-- <span class="highlight-label">males per 100 females born in East Asia & Pacific</span> -->
               </div>
-              <p>In some regions, being born female already means facing different expectations and opportunities.</p>
+              <!-- <p>In some regions, being born female already means facing different expectations and opportunities.</p> -->
             </div>
           </div>
         </div>
         
-        <div class="story-stage" id="education-stage" data-stage="1">
+        <div class="story-stage" id="education-stage" data-stage="primary">
           <div class="illustration-container">
             <div class="boy-illustration"></div>
             <div class="girl-illustration"></div>
@@ -130,7 +122,7 @@
           </div>
         </div>
         
-        <div class="story-stage" id="career-stage" data-stage="2">
+        <div class="story-stage" id="career-stage" data-stage="secondary">
           <div class="illustration-container">
             <div class="boy-illustration"></div>
             <div class="girl-illustration"></div>
@@ -151,7 +143,7 @@
           </div>
         </div>
         
-        <div class="story-stage" id="leadership-stage" data-stage="3">
+        <div class="story-stage" id="leadership-stage" data-stage="tertiary">
           <div class="illustration-container">
             <div class="boy-illustration"></div>
             <div class="girl-illustration"></div>
@@ -172,7 +164,7 @@
           </div>
         </div>
 
-        <div class="story-stage" id="conclusion-stage" data-stage="4">
+        <div class="story-stage" id="conclusion-stage" data-stage="firstjob">
           <div class="illustration-container">
             <div class="conclusion-illustration"></div>
           </div>
@@ -279,20 +271,23 @@
         <div class="stage-controls">
             <div class="stage-dot active" data-stage="birth">1</div>
             <div class="stage-line"></div>
-            <div class="stage-dot" data-stage="school">2</div>
+            <div class="stage-dot" data-stage="primary">2</div>
             <div class="stage-line"></div>
-            <div class="stage-dot" data-stage="teen">3</div>
+            <div class="stage-dot" data-stage="secondary">3</div>
             <div class="stage-line"></div>
-            <div class="stage-dot" data-stage="college">4</div>
+            <div class="stage-dot" data-stage="tertiary">4</div>
             <div class="stage-line"></div>
-            <div class="stage-dot" data-stage="career">5</div>
+            <div class="stage-dot" data-stage="firstjob">5</div>
+            <div class="stage-line"></div>
+            <div class="stage-dot" data-stage="career">6</div>
         </div>
 
         <div class="stage-labels">
             <div class="stage-label">Birth</div>
-            <div class="stage-label">School</div>
-            <div class="stage-label">Teen</div>
-            <div class="stage-label">College</div>
+            <div class="stage-label">Primary</div>
+            <div class="stage-label">Secondary</div>
+            <div class="stage-label">Tertiary</div>
+            <div class="stage-label">First Job</div>
             <div class="stage-label">Career</div>
         </div>
     </div>
@@ -355,9 +350,55 @@
 </div>
   </section>
 
+<!-- Regional Gender Equality Index Section -->
+<section class="regional-gender-index-section" style="padding: 3rem 0; background: #fafbfc;">
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:2.5rem;">Regional Gender Equality Index</h2>
+    <div class="regional-index-grid" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
+      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
+        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Europe & Central Asia</div>
+        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">78.5</div>
+        <canvas id="radar-europe" width="180" height="120" style="margin-bottom:1rem;"></canvas>
+        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
+          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">92%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">65%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">35%</div></div>
+        </div>
+      </div>
+      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
+        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">East Asia & Pacific</div>
+        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">72.3</div>
+        <canvas id="radar-asia" width="180" height="120" style="margin-bottom:1rem;"></canvas>
+        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
+          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">88%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">58%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">28%</div></div>
+        </div>
+      </div>
+      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
+        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Sub-Saharan Africa</div>
+        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">65.8</div>
+        <canvas id="radar-africa" width="180" height="120" style="margin-bottom:1rem;"></canvas>
+        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
+          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">82%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">45%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">22%</div></div>
+        </div>
+      </div>
+      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
+        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Latin America & Caribbean</div>
+        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">74.2</div>
+        <canvas id="radar-america" width="180" height="120" style="margin-bottom:1rem;"></canvas>
+        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
+          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">90%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">52%</div></div>
+          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">31%</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-<section id
 <!-- Global Gender Landscape Section -->
 
 <div class="container">
@@ -498,147 +539,87 @@
   </div>
 </section>
 
-<!-- Hackathon Section -->
-<section id="hackathon" class="hackathon-section">
-  <div class="container">
-    <div class="hackathon-header">
-      <h2>🚀 Hack Our Story</h2>
-      <p class="hackathon-subtitle">Transform Data into Compelling Narratives</p>
-    </div>
-    
-    <div class="hackathon-challenge">
-      <div class="challenge-intro">
-        <h3>The Challenge</h3>
-        <p>Use the World Bank gender data to create innovative solutions that tell compelling stories about gender equality. Your solution can be:</p>
+<!-- Live Reality Dashboard Hero -->
+<!-- <section id="live-dashboard" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#181c24 url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;position:relative;">
+  <div style="backdrop-filter: blur(6px); background:rgba(24,28,36,0.82); border-radius:2rem; padding:3.5rem 2.5rem; box-shadow:0 8px 32px #0008; text-align:center; max-width:480px; margin-top:4rem;">
+    <h1 style="color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:1.2rem;letter-spacing:0.01em;">🌍 Real-Time Reality Check:</h1>
+    <div style="font-size:1.35rem;color:#fff;margin-bottom:2.2rem;">
+      <div style="margin-bottom:1.1rem;">
+        👧🏽 Girls married before 18 today: <span id="live-girls-married" style="font-weight:700;font-size:2.1rem;letter-spacing:1px;">0</span>
       </div>
-      
-      <div class="solution-categories">
-        <div class="category-card">
-          <div class="category-icon">🤖</div>
-          <h4>AI-Powered Insights</h4>
-          <p>Develop machine learning models to predict trends, identify intervention points, or create personalized recommendations.</p>
-          <div class="category-examples">
-            <span>Predictive Analytics</span>
-            <span>Pattern Recognition</span>
-            <span>Personalized Insights</span>
-          </div>
-        </div>
-        
-        <div class="category-card">
-          <div class="category-icon">📊</div>
-          <h4>Data Visualizations</h4>
-          <p>Create compelling visual stories that make complex gender data accessible and engaging for diverse audiences.</p>
-          <div class="category-examples">
-            <span>Interactive Dashboards</span>
-            <span>Storytelling Charts</span>
-            <span>Immersive Experiences</span>
-          </div>
-        </div>
-        
-        <div class="category-card">
-          <div class="category-icon">🎭</div>
-          <h4>Creative Narratives</h4>
-          <p>Develop awareness campaigns, storytelling platforms, or creative content that brings gender data to life.</p>
-          <div class="category-examples">
-            <span>Digital Storytelling</span>
-            <span>Awareness Campaigns</span>
-            <span>Educational Content</span>
-          </div>
-        </div>
-        
-        <div class="category-card">
-          <div class="category-icon">💡</div>
-          <h4>Innovative Solutions</h4>
-          <p>Build any tech or non-tech solution that uses gender data to drive meaningful change and awareness.</p>
-          <div class="category-examples">
-            <span>Mobile Applications</span>
-            <span>Policy Tools</span>
-            <span>Community Platforms</span>
-          </div>
-        </div>
+      <div style="margin-bottom:1.1rem;">
+        💰 Global gender pay gap: <span id="live-pay-gap" style="font-weight:700;font-size:2.1rem;letter-spacing:1px;">27%</span>
+      </div>
+      <div>
+        🧠 Women in STEM jobs: <span id="live-stem" style="font-weight:700;font-size:2.1rem;letter-spacing:1px;">18.5%</span>
       </div>
     </div>
-    
-    <div class="hackathon-resources">
-      <h3>Resources to Get Started</h3>
-      <div class="resource-grid">
-        <div class="resource-card">
-          <h4>📚 Data Sources</h4>
-          <ul>
-            <li><a href="https://genderdata.worldbank.org" target="_blank">World Bank Gender Data Portal</a></li>
-            <li><a href="https://libguides.utdallas.edu/Data/Women" target="_blank">UTD Women's Data Guide</a></li>
-            <li><a href="https://data.worldbank.org" target="_blank">World Bank Open Data</a></li>
-          </ul>
-        </div>
-        
-        <div class="resource-card">
-          <h4>🛠️ Tools & APIs</h4>
-          <ul>
-            <li>Chart.js for Visualizations</li>
-            <li>Python/R for Data Analysis</li>
-            <li>Tableau for Dashboards</li>
-            <li>AI/ML Libraries</li>
-          </ul>
-        </div>
-        
-        <div class="resource-card">
-          <h4>📖 Storytelling Guides</h4>
-          <ul>
-            <li>Data Storytelling Best Practices</li>
-            <li>Narrative Arc Templates</li>
-            <li>Audience Engagement Strategies</li>
-            <li>Visual Design Principles</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div class="hackathon-cta">
-      <h3>Ready to Hack Our Story?</h3>
-      <p>Join us in transforming gender data into compelling narratives that drive change and inspire action.</p>
-      <div class="cta-buttons">
-        <a href="https://genderdata.worldbank.org" target="_blank" class="cta-btn primary">Explore Data Portal</a>
-        <a href="https://libguides.utdallas.edu/Data/Women" target="_blank" class="cta-btn secondary">Access Resources</a>
-      </div>
-    </div>
+    <button onclick="document.getElementById('bias-timeline').scrollIntoView({behavior:'smooth'})" style="background:#fff;color:#181c24;font-weight:700;font-size:1.1rem;padding:1rem 2.5rem;border-radius:2rem;border:none;box-shadow:0 2px 12px #0004;cursor:pointer;">➡️ Scroll to See Her Story...</button>
   </div>
-</section>
+</section> -->
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Hack Our Story</h3>
-        <p>Transforming gender data into compelling narratives for change.</p>
-        <div class="social-links">
-          <span>🚀</span>
-          <span>📊</span>
-          <span>🎭</span>
-        </div>
+<!-- Bias Timeline Section -->
+<!-- <section id="bias-timeline" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:#f7f8fa;overflow:hidden;"> -->
+  <!-- Pulsating world map background (SVG or CSS) -->
+  <!-- <div style="position:absolute;top:0;left:0;width:100vw;height:100vh;z-index:0;opacity:0.13;pointer-events:none;"> -->
+    <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Equirectangular_projection_SW.jpg" alt="World Map" style="width:100vw;height:100vh;object-fit:cover;filter: grayscale(1) blur(2px);animation:pulse-bg 6s infinite alternate;" /> -->
+  <!-- </div> -->
+  <!-- <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;"> -->
+    <!-- <div style="font-size:1.5rem;font-weight:700;color:#222;margin-bottom:2.5rem;">This is where it all begins…</div> -->
+    <!-- Glowing timeline -->
+    <!-- <div style="width:6px;height:320px;background:linear-gradient(180deg,#4a6cf7,#fff,#f357a8);border-radius:3px;box-shadow:0 0 32px #4a6cf7,0 0 32px #f357a8;position:relative;margin-bottom:2.5rem;"></div> -->
+    <!-- Animated icons and images -->
+    <!-- <div style="display:flex;align-items:flex-end;gap:2.2rem;font-size:2.2rem;margin-bottom:2.5rem;">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <span style="animation:fadein 1s 0s both;">🍼</span>
+        <img src="assets/images/birth.png" alt="Birth" style="width:54px;height:54px;border-radius:12px;box-shadow:0 2px 8px #0002;margin-top:0.5rem;object-fit:cover;" />
       </div>
-      <div class="footer-section">
-        <h3>Data Sources</h3>
-        <ul>
-          <li><a href="https://genderdata.worldbank.org" target="_blank">World Bank Gender Data Portal</a></li>
-          <li><a href="https://libguides.utdallas.edu/Data/Women" target="_blank">UTD Women's Data Guide</a></li>
-        </ul>
+      <span style="animation:fadein 1s 0.5s both;align-self:center;">➡️</span>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <span style="animation:fadein 1s 1s both;">📚</span>
+        <img src="assets/images/primary.png" alt="Primary" style="width:54px;height:54px;border-radius:12px;box-shadow:0 2px 8px #0002;margin-top:0.5rem;object-fit:cover;" />
       </div>
-      <div class="footer-section">
-        <h3>Resources</h3>
-        <ul>
-          <li><a href="#story">The Story</a></li>
-          <li><a href="#data">Data Journey</a></li>
-          <li><a href="#insights">AI Insights</a></li>
-          <li><a href="#hackathon">Hackathon</a></li>
-        </ul>
+      <span style="animation:fadein 1s 1.5s both;align-self:center;">➡️</span>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <span style="animation:fadein 1s 2s both;">🧑‍🏫</span>
+        <img src="assets/images/teritory.png" alt="Tertiary" style="width:54px;height:54px;border-radius:12px;box-shadow:0 2px 8px #0002;margin-top:0.5rem;object-fit:cover;" />
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Hack Our Story. Data-driven storytelling for gender equality.</p>
-    </div>
+      <span style="animation:fadein 1s 2.5s both;align-self:center;">➡️</span>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <span style="animation:fadein 1s 3s both;">💼</span>
+        <img src="assets/images/career.png" alt="Career" style="width:54px;height:54px;border-radius:12px;box-shadow:0 2px 8px #0002;margin-top:0.5rem;object-fit:cover;" />
+      </div> -->
+      <!-- <span style="animation:fadein 1s 3.5s both;align-self:center;">➡️</span>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <span style="animation:fadein 1s 4s both;">🏆</span>
+      </div>
+      <span style="animation:fadeout 1.5s 4.5s both;opacity:0.5;align-self:center;">💔</span>
+      <span style="animation:fadeout 1.5s 5s both;opacity:0.5;align-self:center;">🧹</span>
+      <span style="animation:fadeout 1.5s 5.5s both;opacity:0.5;align-self:center;">💍</span>
+      <span style="animation:fadeout 1.5s 6s both;opacity:0.5;align-self:center;">🚫</span>
+    </div> -->
+    <!-- Live overlay -->
+    <!-- <div style="background:#fff;border-radius:1.2rem;padding:1.1rem 2.2rem;box-shadow:0 2px 12px #0001;font-size:1.3rem;font-weight:600;color:#f357a8;margin-bottom:2.5rem;">
+      Child Marriages Today: <span id="timeline-child-marriage" style="font-weight:800;font-size:1.7rem;">978</span>
+    </div> -->
+    <!-- <div style="font-size:1.1rem;color:#888;">➡️ Scroll down to reveal her path</div>
   </div>
-</footer>
+</section> -->
+
+<style>
+@keyframes pulse-bg {
+  0% { filter: grayscale(1) blur(2px) brightness(1); }
+  100% { filter: grayscale(1) blur(2px) brightness(1.15); }
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0.2; }
+}
+</style>
 
 <!-- Conclusion & Solutions -->
 <section class="section close-gap-section">
@@ -703,16 +684,42 @@
     </div>
   </div>
 </section>
+<!-- Minimal, Appealing Footer (Comic Card Style) -->
+<footer class="footer-minimal" style="background: #f5f6fa; border-top: 1px solid #ececec; padding: 2.5rem 0 2rem 0; text-align: center; margin-top: 4rem;">
+  <h2 style="font-size:1.6rem;font-weight:700;color:#222;margin-bottom:2.2rem;">Meet the Hackathon Heroes! 💻🦸‍♀️🦸‍♂️</h2>
+  <section style="display:flex;justify-content:center;align-items:stretch;gap:2.5rem;flex-wrap:wrap;">
+    <!-- Card 1 -->
+    <div style="background:#fff;border:3px solid #222;border-radius:18px;box-shadow:0 4px 18px #0001;padding:2.2rem 2rem 1.5rem 2rem;min-width:220px;max-width:260px;display:flex;flex-direction:column;align-items:center;">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aarushi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
+      <div style="font-size:1.15rem;font-weight:700;color:#222;margin-bottom:0.1rem;">Hiral Shah</div>
+      <div style="font-size:1.01rem;color:#666;margin-bottom:1.1rem;">Data Storyteller</div>
+      <div style="background:#fff;border:2.5px solid #222;border-radius:18px 18px 18px 0;padding:0.7rem 1.1rem;font-size:1.05rem;color:#222;font-family:'Comic Sans MS','Comic Sans',cursive,sans-serif;box-shadow:0 2px 8px #0001;min-width:120px;text-align:left;">💬 "I squashed the final bug!"</div>
+    </div>
+    <!-- Card 2 -->
+    <div style="background:#fff;border:3px solid #222;border-radius:18px;box-shadow:0 4px 18px #0001;padding:2.2rem 2rem 1.5rem 2rem;min-width:220px;max-width:260px;display:flex;flex-direction:column;align-items:center;">
+      <img src="assets/images/madhu.jpeg" alt="Madhu" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
+      <div style="font-size:1.15rem;font-weight:700;color:#222;margin-bottom:0.1rem;">Madhu Sri</div>
+      <div style="font-size:1.01rem;color:#666;margin-bottom:1.1rem;">Frontend Wizard</div>
+      <div style="background:#fff;border:2.5px solid #222;border-radius:18px 18px 18px 0;padding:0.7rem 1.1rem;font-size:1.05rem;color:#222;font-family:'Comic Sans MS','Comic Sans',cursive,sans-serif;box-shadow:0 2px 8px #0001;min-width:120px;text-align:left;">💬 "3 AM commits are my vibe"</div>
+    </div>
+    <!-- Card 3 -->
+    <div style="background:#fff;border:3px solid #222;border-radius:18px;box-shadow:0 4px 18px #0001;padding:2.2rem 2rem 1.5rem 2rem;min-width:220px;max-width:260px;display:flex;flex-direction:column;align-items:center;">
+      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Saanvi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
+      <div style="font-size:1.15rem;font-weight:700;color:#222;margin-bottom:0.1rem;">Padmasree</div>
+      <div style="font-size:1.01rem;color:#666;margin-bottom:1.1rem;">AI/ML Prodigy</div>
+      <div style="background:#fff;border:2.5px solid #222;border-radius:18px 18px 18px 0;padding:0.7rem 1.1rem;font-size:1.05rem;color:#222;font-family:'Comic Sans MS','Comic Sans',cursive,sans-serif;box-shadow:0 2px 8px #0001;min-width:120px;text-align:left;">💬 "Deploy, break, repeat!"</div>
+    </div>
+  </section>
+</footer>
+
+
 </div>
 
 </body>
 
 
 <!-- Footer -->
-<footer>
-    <p>Data sourced from <a href="https://genderdata.worldbank.org" target="_blank">World Bank Gender Data Portal</a></p>
-    <p>Created for SheRises Hackathon 2024</p>
-</footer>
+
 
 
 </html>

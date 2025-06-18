@@ -1046,6 +1046,182 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Initialize story progress
   initializeStoryProgress();
+
+  // Regional Gender Equality Radar Charts
+  function renderRegionalRadarChart(canvasId, dataArr) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Education', 'Workforce', 'Leadership'],
+        datasets: [{
+          label: 'Index',
+          data: dataArr,
+          backgroundColor: 'rgba(74, 108, 247, 0.15)',
+          borderColor: '#4a6cf7',
+          borderWidth: 2,
+          pointBackgroundColor: '#4a6cf7',
+          pointBorderColor: '#fff',
+          pointRadius: 4,
+        }]
+      },
+      options: {
+        responsive: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          r: {
+            min: 0,
+            max: 100,
+            ticks: { display: false },
+            pointLabels: { font: { size: 13, weight: 'bold' } },
+            grid: { color: '#e5e9f2' }
+          }
+        }
+      }
+    });
+  }
+  renderRegionalRadarChart('radar-europe', [92, 65, 35]);
+  renderRegionalRadarChart('radar-asia', [88, 58, 28]);
+  renderRegionalRadarChart('radar-africa', [82, 45, 22]);
+  renderRegionalRadarChart('radar-america', [90, 52, 31]);
+
+  // Live Data Counter for Child Marriages
+  const childCounter = document.getElementById('child-marriage-counter');
+  if (childCounter) {
+    const daily = 33000;
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const startOfDay = new Date();
+    startOfDay.setHours(0,0,0,0);
+    function updateCounter() {
+      const now = new Date();
+      const elapsed = now - startOfDay;
+      const value = Math.floor((elapsed / msPerDay) * daily);
+      childCounter.textContent = value.toLocaleString();
+      requestAnimationFrame(updateCounter);
+    }
+    updateCounter();
+  }
+
+  // Crimes Against Women Counter (example: 137 women killed by a partner/family per day)
+  const crimeCounter = document.getElementById('crime-counter');
+  if (crimeCounter) {
+    const daily = 137;
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const startOfDay = new Date();
+    startOfDay.setHours(0,0,0,0);
+    function updateCrimeCounter() {
+      const now = new Date();
+      const elapsed = now - startOfDay;
+      const value = Math.floor((elapsed / msPerDay) * daily);
+      crimeCounter.textContent = value.toLocaleString();
+      requestAnimationFrame(updateCrimeCounter);
+    }
+    updateCrimeCounter();
+  }
+
+  // Ticker Tape for Gender Equality Facts
+  const ticker = document.getElementById('live-ticker-text');
+  if (ticker) {
+    const facts = [
+      'Every year, 12 million girls are married before the age of 18.',
+      'Women globally earn 16% less than men on average.',
+      '130 million girls worldwide are out of school.',
+      'Only 28% of managerial positions are held by women.',
+      'Women spend 3x more time on unpaid care work than men.',
+      '1 in 3 women experience gender-based violence in their lifetime.'
+    ];
+    let factIdx = 0;
+    function updateTicker() {
+      ticker.textContent = facts[factIdx];
+      factIdx = (factIdx + 1) % facts.length;
+    }
+    updateTicker();
+    setInterval(updateTicker, 4000);
+  }
+
+  // Placeholder: Animate the hero chart (optional, can be replaced with real data)
+  const heroChart = document.getElementById('hero-animated-chart');
+  if (heroChart && window.Chart) {
+    new Chart(heroChart.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: Array.from({length: 24}, (_, i) => `${i}:00`),
+        datasets: [{
+          label: 'Live Data Example',
+          data: Array.from({length: 24}, () => Math.floor(Math.random()*100)),
+          borderColor: '#ffd700',
+          backgroundColor: 'rgba(255,215,0,0.15)',
+          tension: 0.4,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false, min: 0, max: 100 }
+        },
+        animation: { duration: 1200 }
+      }
+    });
+  }
+
+  // Live Reality Dashboard Counters
+  const girlsMarried = document.getElementById('live-girls-married');
+  if (girlsMarried) {
+    const daily = 1267;
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const startOfDay = new Date();
+    startOfDay.setHours(0,0,0,0);
+    function updateGirlsMarried() {
+      const now = new Date();
+      const elapsed = now - startOfDay;
+      const value = Math.floor((elapsed / msPerDay) * daily);
+      girlsMarried.textContent = value.toLocaleString();
+      requestAnimationFrame(updateGirlsMarried);
+    }
+    updateGirlsMarried();
+  }
+  const payGap = document.getElementById('live-pay-gap');
+  if (payGap) {
+    let percent = 27;
+    let direction = 1;
+    setInterval(() => {
+      percent += 0.01 * direction;
+      if (percent > 28) direction = -1;
+      if (percent < 26) direction = 1;
+      payGap.textContent = percent.toFixed(2) + '%';
+    }, 80);
+  }
+  const stem = document.getElementById('live-stem');
+  if (stem) {
+    let percent = 18.5;
+    let direction = 1;
+    setInterval(() => {
+      percent += 0.003 * direction;
+      if (percent > 19) direction = -1;
+      if (percent < 18) direction = 1;
+      stem.textContent = percent.toFixed(2) + '%';
+    }, 120);
+  }
+  // Bias Timeline Child Marriages Counter
+  const timelineMarriage = document.getElementById('timeline-child-marriage');
+  if (timelineMarriage) {
+    const daily = 978;
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const startOfDay = new Date();
+    startOfDay.setHours(0,0,0,0);
+    function updateTimelineMarriage() {
+      const now = new Date();
+      const elapsed = now - startOfDay;
+      const value = Math.floor((elapsed / msPerDay) * daily);
+      timelineMarriage.textContent = value.toLocaleString();
+      requestAnimationFrame(updateTimelineMarriage);
+    }
+    updateTimelineMarriage();
+  }
 });
 
 // Story Journey Charts
@@ -1650,127 +1826,115 @@ document.querySelectorAll('.story-stage').forEach(stage => {
   storyObserver.observe(stage);
 });
 
+// --- Update stageData with unified keys ---
+const stageData = {
+    birth: {
+        maya: { percentage: 95, description: "Full of potential and wonder" },
+        noah: { percentage: 95, description: "Curious and eager to learn" },
+        comic: [
+            { rageImg: "assets/images/birth.png" }
+        ],
+        tagline: "Every great journey starts with a single breath"
+    },
+    primary: {
+        maya: { percentage: 90, description: "Eager to learn and grow" },
+        noah: { percentage: 92, description: "Building strong foundations" },
+        comic: [
+            { rageImg: "assets/images/primary.png" }
+        ],
+        tagline: "Primary school opens new worlds"
+    },
+    secondary: {
+        maya: { percentage: 85, description: "Facing new challenges" },
+        noah: { percentage: 88, description: "Exploring interests" },
+        comic: [
+            { rageImg: "assets/images/secondary.png" }
+        ],
+        tagline: "Secondary school shapes ambitions"
+    },
+    tertiary: {
+        maya: { percentage: 80, description: "Pursuing higher education" },
+        noah: { percentage: 83, description: "Preparing for the future" },
+        comic: [
+            { rageImg: "assets/images/teritory.png" }
+        ],
+        tagline: "Tertiary education unlocks potential"
+    },
+    firstjob: {
+        maya: { percentage: 75, description: "Breaking into the workforce" },
+        noah: { percentage: 80, description: "Starting a career" },
+        comic: [
+            { rageImg: "assets/images/first-job.png" }
+        ],
+        tagline: "First job, first big step"
+    },
+    career: {
+        maya: { percentage: 70, description: "Fighting for equal opportunities" },
+        noah: { percentage: 78, description: "Climbing the career ladder" },
+        comic: [
+            { rageImg: "assets/images/career.png" }
+        ],
+        tagline: "Career defines our contribution to society"
+    }
+};
 
+// --- Update updateStage to use new keys and update both journey buttons and stage dots ---
+function updateStage(stageName) {
+    const data = stageData[stageName];
+    if (!data) return;
+    document.getElementById('maya-percentage').textContent = data.maya.percentage + '%';
+    document.getElementById('noah-percentage').textContent = data.noah.percentage + '%';
+    document.getElementById('maya-description').textContent = data.maya.description;
+    document.getElementById('noah-description').textContent = data.noah.description;
+    const comicContent = document.getElementById('comic-content');
+    comicContent.innerHTML = '';
+    // Only show the first rage comic image for the stage
+    if (data.comic && data.comic.length > 0) {
+        const scene = data.comic[0];
+        const sceneDiv = document.createElement('div');
+        sceneDiv.className = 'comic-scene';
+        sceneDiv.innerHTML = `
+            <img src="${scene.rageImg}" alt="rage comic" class="rage-img" style="display:block; margin:0 auto; max-width:100%; max-height:220px; border-radius:12px; box-shadow:0 2px 8px #0001;" />
+        `;
+        comicContent.appendChild(sceneDiv);
+    }
+    document.getElementById('tagline').textContent = data.tagline;
+    updateCharacterFill('maya', data.maya.percentage);
+    updateCharacterFill('noah', data.noah.percentage);
+    document.querySelectorAll('.journey-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.stage-dot').forEach(dot => dot.classList.remove('active'));
+    const btn = document.querySelector(`.journey-btn[data-stage="${stageName}"]`);
+    if (btn) btn.classList.add('active');
+    const dot = document.querySelector(`.stage-dot[data-stage="${stageName}"]`);
+    if (dot) dot.classList.add('active');
+}
 
-
-//journey code
-
-        const stageData = {
-            birth: {
-                maya: { percentage: 95, description: "Full of potential and wonder" },
-                noah: { percentage: 95, description: "Curious and eager to learn" },
-                comic: [
-                    { character: "👶", text: "Welcome to the world!" },
-                    { character: "🌟", text: "The journey begins here!" }
-                ],
-                tagline: "Every great journey starts with a single breath"
-            },
-            school: {
-                maya: { percentage: 88, description: "Learning and discovering talents" },
-                noah: { percentage: 90, description: "Building foundations for the future" },
-                comic: [
-                    { character: "👨‍🏫", text: "Education opens doors to opportunity!" },
-                    { character: "📚", text: "Knowledge is power!" }
-                ],
-                tagline: "Education is the key to unlocking potential"
-            },
-            teen: {
-                maya: { percentage: 82, description: "Potential meets obstacles early" },
-                noah: { percentage: 85, description: "Navigating challenges with resilience" },
-                comic: [
-                    { character: "🎭", text: "Identity crisis is just growing up!" },
-                    { character: "🚀", text: "Time to find your own path!" }
-                ],
-                tagline: "The teenage years shape who we become"
-            },
-            college: {
-                maya: { percentage: 75, description: "Overcoming societal barriers" },
-                noah: { percentage: 80, description: "Steady progress through life" },
-                comic: [
-                    { character: "🎓", text: "Higher education = higher opportunities!" },
-                    { character: "💡", text: "Innovation happens here!" }
-                ],
-                tagline: "College years: where dreams meet reality"
-            },
-            career: {
-                maya: { percentage: 70, description: "Fighting for equal opportunities" },
-                noah: { percentage: 75, description: "Climbing the career ladder" },
-                comic: [
-                    { character: "💼", text: "Time to make a mark in the world!" },
-                    { character: "🏆", text: "Success is earned, not given!" }
-                ],
-                tagline: "Career defines our contribution to society"
-            }
-        };
-
-        function updateStage(stageName) {
-            const data = stageData[stageName];
-            
-            // Update percentages
-            document.getElementById('maya-percentage').textContent = data.maya.percentage + '%';
-            document.getElementById('noah-percentage').textContent = data.noah.percentage + '%';
-            
-            // Update descriptions
-            document.getElementById('maya-description').textContent = data.maya.description;
-            document.getElementById('noah-description').textContent = data.noah.description;
-            
-            // Update comic content
-            const comicContent = document.getElementById('comic-content');
-            comicContent.innerHTML = '';
-            data.comic.forEach(scene => {
-                const sceneDiv = document.createElement('div');
-                sceneDiv.className = 'comic-scene';
-                sceneDiv.innerHTML = `
-                    <div class="comic-character">${scene.character}</div>
-                    <div class="speech-bubble">${scene.text}</div>
-                `;
-                comicContent.appendChild(sceneDiv);
-            });
-            
-            // Update tagline
-            document.getElementById('tagline').textContent = data.tagline;
-            
-            // Update character fill based on percentage
-            updateCharacterFill('maya', data.maya.percentage);
-            updateCharacterFill('noah', data.noah.percentage);
-            
-            // Update active dot
-            document.querySelectorAll('.stage-dot').forEach(dot => {
-                dot.classList.remove('active');
-            });
-            document.querySelector(`[data-stage="${stageName}"]`).classList.add('active');
-        }
-
-        function updateCharacterFill(character, percentage) {
-            const fillOffset = (100 - percentage) + '%';
-            const gradient = document.getElementById(`${character}-gradient`);
-            const stops = gradient.querySelectorAll('stop');
-            
-            // Update the gradient stops
-            stops[0].setAttribute('offset', '0%');
-            stops[1].setAttribute('offset', fillOffset);
-            stops[2].setAttribute('offset', fillOffset);
-            stops[3].setAttribute('offset', '100%');
-        }
-
-        // Event listeners for stage dots
-        document.querySelectorAll('.stage-dot').forEach(dot => {
-            dot.addEventListener('click', () => {
-                const stage = dot.getAttribute('data-stage');
-                updateStage(stage);
-            });
+// --- Update event listeners for journey buttons and stage dots ---
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.journey-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const stage = this.getAttribute('data-stage');
+            updateStage(stage);
         });
-
-        // Initialize with birth stage
-        updateStage('birth');
-
-        // Add hover effects for characters
-        document.querySelectorAll('.character-svg').forEach(svg => {
-            svg.addEventListener('mouseenter', () => {
-                svg.style.transform = 'scale(1.05) rotate(2deg)';
-            });
-            
-            svg.addEventListener('mouseleave', () => {
-                svg.style.transform = 'scale(1) rotate(0deg)';
-            });
+    });
+    document.querySelectorAll('.stage-dot').forEach(dot => {
+        dot.addEventListener('click', function() {
+            const stage = this.getAttribute('data-stage');
+            updateStage(stage);
         });
+    });
+    // --- Initialize with birth stage ---
+    updateStage('birth');
+});
+
+function updateCharacterFill(character, percentage) {
+    const fillOffset = (100 - percentage) + '%';
+    const gradient = document.getElementById(`${character}-gradient`);
+    const stops = gradient.querySelectorAll('stop');
+    
+    // Update the gradient stops
+    stops[0].setAttribute('offset', '0%');
+    stops[1].setAttribute('offset', fillOffset);
+    stops[2].setAttribute('offset', fillOffset);
+    stops[3].setAttribute('offset', '100%');
+}
