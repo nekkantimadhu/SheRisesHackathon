@@ -2,289 +2,717 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Gender Gap Journey Map</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hack Our Story: Gender Equality Through Data Storytelling</title>
 <link rel="stylesheet" href="css/styles.css">
-<script src="js/svg-creation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/script.js"></script>
+<script src="js/comic-illustrations.js"></script>
 </head>
 <body>
-<!-- Create a hidden version of the headers that will be revealed after intro -->
-<div class="fixed-headers content-hidden">
-  <h1>Two Paths, One World</h1>
-  <h2 style="text-align: center; margin-top: 0; margin-bottom: 30px; color: #666;">A Journey Through the Gender Gap</h2>
-</div>
-
-<div class="story-intro-container" id="intro-container">
-  <div class="intro-headers">
-    <h1>Two Paths, One World</h1>
-    <h2 style="text-align: center; margin-top: 0; margin-bottom: 30px; color: #666;">A Journey Through the Gender Gap</h2>
-  </div>
-  <div class="story-intro" id="typing-intro">
-    <!-- Text will be typed here by JavaScript -->
-  </div>
-  <button id="start-journey-btn" class="start-journey-btn">Start Journey</button>
-</div>
-
-<div class="journey-container content-hidden">
-  <!-- FEMALE JOURNEY -->
-  <div class="journey-column female">
-    <div class="column-header">Maya's Journey</div>
-    <div class="chart-container" id="chartContainer">
-      <!-- Charts will be generated here -->
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Maya is born with endless potential in a world of possibilities.</div>
-        <div class="narrative">Before she can speak or walk, subtle biases begin to shape her future. In some parts of the world, being born female already means facing different expectations.</div>
-        <div class="stat">In some regions, <a href="https://genderdata.worldbank.org/en/indicator/sp-pop-brth-mf" target="_blank">sex ratio at birth is skewed toward boys</a> (e.g., 111.8 males per 100 females in East Asia & Pacific).</div>
-        <div class="financial-label">100% potential for financial independence</div>
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Maya starts school with excitement, her notebooks pristine and pencils sharpened.</div>
-        <div class="narrative">In many countries, Maya has equal access to primary education, but cultural expectations and household responsibilities may already begin to shape her learning experience differently than her male peers.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/se-prm-enrr" target="_blank">Primary school enrollment rate for girls globally: 89.6% (World Bank, 2020)</a>.</div>
-        <div class="dropoff">Drop-off: In South Asia, <a href="https://genderdata.worldbank.org/en/indicator/se-prm-cmpt-zs" target="_blank">girls' primary completion is 87.1% vs. 88.9% for boys</a>.</div>
-        <div class="reflection">In rural Nepal, Maya walks two hours to school each day. Her brother stopped attending to help on the family farm, but Maya persists despite also handling household chores after class.</div>
-        <div class="financial-label">80% on track for financial independence</div>
-
-      </div>
-    </div>
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Maya enters adolescence and secondary school simultaneously—both transformative periods in her life.</div>
-        <div class="narrative">As social pressures increase, Maya faces new challenges. In many regions, she navigates safety concerns, early marriage pressures, and increasing household responsibilities that her male classmates don't experience.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/se-sec-enrr" target="_blank">Secondary school enrollment rate for girls globally: 76% (World Bank, 2020)</a>.</div>
-        <div class="dropoff">Drop-off: <a href="https://genderdata.worldbank.org/topics/education/" target="_blank">5.5 million more girls than boys are out of school at secondary level</a> in low-income countries.</div>
-        <div class="reflection">In Argentina, Maya's teacher notices her aptitude for mathematics but discourages her from pursuing it further, suggesting that language arts might be more "suitable."</div>
-        <div class="financial-label">60% on track for financial independence</div>
-
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Maya defeats the odds and enters university, facing crucial decisions about her future career path.</div>
-        <div class="narrative">Though women like Maya now outnumber men in higher education globally, the fields they study significantly impact their future earnings. Subtle discouragements and stereotypes steer many away from higher-paying STEM fields.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/se-ter-enrr" target="_blank">Female tertiary enrollment rate: 41.7% globally vs. 36.9% for males (World Bank, 2020)</a>.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/uis-fep-4-v" target="_blank">Only 35% of students in post-secondary non-tertiary vocational education are female</a> (World Bank, 2021).</div>
-        <div class="dropoff">Drop-off: Only <a href="https://genderdata.worldbank.org/topics/education/" target="_blank">35% of STEM students worldwide are female</a>.</div>
-        <div class="pay-gap">Field choice impact: Women-dominated fields lead to 26% lower earnings on average.</div>
-        <div class="reflection">In Canada, Maya's computer science class has only 7 women among 35 students. Despite excellent grades, she often doubts whether she belongs in the program.</div>
-        <div class="financial-label">50% on track for financial independence</div>
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Maya enters the workforce with the same degree as her male peers but faces an immediate pay gap.</div>
-        <div class="narrative">Despite educational achievements, the transition to employment reveals stark gender differences. Maya encounters gender bias in hiring, negotiation disadvantages, and workplace cultures not designed with women in mind.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-tlf-totl-in" target="_blank">Female labor force participation rate: 46.9% globally vs. 72.2% for men (World Bank, 2022)</a>.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-uem-1524-fm-zs" target="_blank">Young women (15-24) face 1.2x higher unemployment rates than young men in the same age group</a> (World Bank, 2022).</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-uem-elv-zs" target="_blank">Women with tertiary education face higher unemployment rates than men with equivalent education</a> (World Bank, 2022).</div>
-        <div class="pay-gap"><a href="https://genderdata.worldbank.org/topics/economic-opportunity/" target="_blank">Entry-level pay gap: Women earn 84 cents for every $1 earned by men</a> in their first jobs.</div>
-        <div class="harassment-stat"><a href="https://genderdata.worldbank.org/topics/agency/" target="_blank">45% of women report experiencing some form of harassment</a> in their first five years of employment (World Bank, 2021).</div>
-        <div class="societal-expectations">Women spend <a href="https://genderdata.worldbank.org/topics/unpaid-care-and-domestic-work/" target="_blank">2-10 times more hours on unpaid care work than men</a>, affecting career availability (World Bank Gender Data).</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-emp-smgt-fe-zs" target="_blank">Women hold only 28.3% of managerial positions globally (World Bank, 2022)</a>.</div>
-        <div class="dropoff">Only <a href="https://genderdata.worldbank.org/topics/economic-opportunity/" target="_blank">23% of firms have a female top manager</a>.</div>
-        <div class="reflection">In Brazil, Maya discovers her male colleague with identical qualifications was offered a starting salary 12% higher than hers. When she negotiates, she's labeled "aggressive." After work, she rushes home to care for elderly parents while male colleagues network at happy hour.</div>
-        <div class="financial-label">30% achieve financial independence</div>
-      </div>
-    </div>
-  
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Maya has worked for a decade, but the path to leadership remains disproportionately challenging.</div>
-        <div class="narrative">The higher Maya climbs, the fewer women she sees. Despite equal or superior qualifications, she faces the "glass ceiling"—invisible barriers created by organizational biases and lack of access to influential networks.</div>
-        <div class="stat">Women hold only 28.3% of managerial positions globally (World Bank, 2022).</div>
-        <div class="dropoff">Only 23% of firms have a female top manager.</div>
-        <div class="pay-gap">Gender pay gap reaches 20% at mid-career level, widening to 28% at senior levels.</div>
-        <div class="harassment-stat">32% of women in leadership positions report having experienced sexual harassment that impacted their career advancement (World Bank, 2021).</div>
-        <div class="societal-expectations">Globally, women leave the workforce at 4x the rate of men following childbirth, with 43% not returning within 10 years (World Bank, 2022).</div>
-        <div class="reflection">In Kenya, Maya's industry has plenty of women at entry-level, but her company's executive team remains exclusively male. After having a child, she finds herself on a "mommy track" with fewer advancement opportunities, while fathers in her company receive promotions at higher rates.</div>
-        <div class="financial-label">20% achieve full financial equity</div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- CENTRAL STAGE HEADERS -->
-  <div class="journey-column stage-headers">
-  <div class="column-header">Life Stages</div>
-    <div class="chart-spacer"></div>
-
-  
+<!-- Navigation -->
+<nav class="navbar">
   <div class="nav-container">
-    <div class="nav-stage-container" data-stage-ref="0">
-      <div class="nav-circle active" data-stage="0">
-        <div class="nav-label">Birth</div>
+    <div class="nav-brand">
+      <span class="brand-icon">🚀</span>
+      <span class="brand-text">Hack Our Story</span>
+    </div>
+    <div class="nav-menu">
+      <a href="#story" class="nav-link">The Story</a>
+      <a href="#data" class="nav-link">Data Journey</a>
+      <a href="#insights" class="nav-link">AI Insights</a>
+      <a href="#hackathon" class="nav-link">Hackathon</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-icon">🎭</span>
+      <span class="badge-text">Storytelling for Change</span>
+    </div>
+    <h1 class="hero-title">Hack Our Story</h1>
+    <p class="hero-subtitle">Where Data Meets Narrative to Drive Gender Equality</p>
+    <div class="hero-description">
+      <p>Every number tells a story. Every statistic represents a life. Join us in transforming gender data into compelling narratives that inspire action and drive change.</p>
+    </div>
+    <button class="start-story-btn" onclick="beginStory()">🎬 Begin the Story</button>
+  </div>
+  <div class="hero-visual">
+    <div class="story-preview">
+      <div class="character-container">
+        <div class="character maya" id="maya-character">
+          <div class="character-icon">👩</div>
+          <div class="character-name">Maya</div>
+        </div>
+        <div class="character noah" id="noah-character">
+          <div class="character-icon">👨</div>
+          <div class="character-name">Noah</div>
+        </div>
       </div>
-    
+      <div class="story-progress">
+        <div class="progress-line">
+          <div class="progress-fill" id="story-progress"></div>
+        </div>
+        <div class="progress-labels">
+          <span>Birth</span>
+          <span>Education</span>
+          <span>Career</span>
+          <span>Leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Story Section -->
+<section id="story" class="story-section">
+  <div class="container">
+    <div class="story-intro">
+      <h2>The Tale of Two Paths</h2>
+      <p class="story-opening">In a world where data shapes destinies, two lives begin with equal potential. But as they journey through life, subtle differences accumulate into profound disparities. This is the story of Maya and Noah, and the data that tells their tale.</p>
     </div>
     
-    <div class="nav-stage-container" data-stage-ref="1">
-      <div class="nav-circle" data-stage="1">
-        <div class="nav-label">Primary</div>
-      </div>
-    
-    </div>
-    
-    <div class="nav-stage-container" data-stage-ref="2">
-      <div class="nav-circle" data-stage="2">
-        <div class="nav-label">Secondary</div>
-      </div>
-    
-    </div>
-    
-    <div class="nav-stage-container" data-stage-ref="3">
-      <div class="nav-circle" data-stage="3">
-        <div class="nav-label">Tertiary</div>
+    <!-- Interactive Story Journey -->
+    <div class="story-journey">
+      <div class="journey-controls">
+        <button class="journey-btn active" data-stage="0">👶 Birth</button>
+        <button class="journey-btn" data-stage="1">📚 Education</button>
+        <button class="journey-btn" data-stage="2">💼 Career</button>
+        <button class="journey-btn" data-stage="3">👑 Leadership</button>
+        <button class="journey-btn" data-stage="4">🌟 Conclusion</button>
       </div>
       
-    </div>
-    
-    <div class="nav-stage-container" data-stage-ref="4">
-      <div class="nav-circle" data-stage="4">
-        <div class="nav-label">First Job</div>
-      </div>
-    
-    </div>
-    
-    <div class="nav-stage-container" data-stage-ref="5">
-      <div class="nav-circle" data-stage="5">
-        <div class="nav-label">Career</div>
+      <div class="journey-content">
+        <div class="story-stage active" id="birth-stage" data-stage="0">
+          <div class="illustration-container">
+            <div class="boy-illustration"></div>
+            <div class="girl-illustration"></div>
+          </div>
+          <div class="stage-visual">
+            <canvas id="birthChart"></canvas>
+          </div>
+          <div class="stage-narrative">
+            <h3>The Beginning</h3>
+            <div class="narrative-text">
+              <p>Maya and Noah enter the world with identical potential. But from the moment they take their first breath, subtle societal biases begin to shape their futures.</p>
+              <div class="data-highlight">
+                <span class="highlight-number">111.8</span>
+                <span class="highlight-label">males per 100 females born in East Asia & Pacific</span>
+              </div>
+              <p>In some regions, being born female already means facing different expectations and opportunities.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="story-stage" id="education-stage" data-stage="1">
+          <div class="illustration-container">
+            <div class="boy-illustration"></div>
+            <div class="girl-illustration"></div>
+          </div>
+          <div class="stage-visual">
+            <canvas id="educationChart"></canvas>
+          </div>
+          <div class="stage-narrative">
+            <h3>The Learning Divide</h3>
+            <div class="narrative-text">
+              <p>As Maya and Noah begin their educational journey, the gaps start to widen. While enrollment rates are increasingly equal, the quality and continuation of education tell a different story.</p>
+              <div class="data-highlight">
+                <span class="highlight-number">5.5M</span>
+                <span class="highlight-label">more girls than boys out of school at secondary level in low-income countries</span>
+              </div>
+              <p>Maya walks two hours to school each day, while her brother stopped attending to help on the family farm.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="story-stage" id="career-stage" data-stage="2">
+          <div class="illustration-container">
+            <div class="boy-illustration"></div>
+            <div class="girl-illustration"></div>
+          </div>
+          <div class="stage-visual">
+            <canvas id="careerChart"></canvas>
+          </div>
+          <div class="stage-narrative">
+            <h3>The Career Crossroads</h3>
+            <div class="narrative-text">
+              <p>Despite equal qualifications, Maya and Noah's career paths diverge dramatically. The workplace introduces barriers that Maya never anticipated.</p>
+              <div class="data-highlight">
+                <span class="highlight-number">84¢</span>
+                <span class="highlight-label">women earn for every dollar men earn in their first jobs</span>
+              </div>
+              <p>Maya discovers her male colleague with identical qualifications was offered a starting salary 12% higher than hers.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="story-stage" id="leadership-stage" data-stage="3">
+          <div class="illustration-container">
+            <div class="boy-illustration"></div>
+            <div class="girl-illustration"></div>
+          </div>
+          <div class="stage-visual">
+            <canvas id="leadershipChart"></canvas>
+          </div>
+          <div class="stage-narrative">
+            <h3>The Leadership Labyrinth</h3>
+            <div class="narrative-text">
+              <p>As they reach the pinnacle of their careers, Maya faces the glass ceiling while Noah benefits from networks and opportunities designed for people like him.</p>
+              <div class="data-highlight">
+                <span class="highlight-number">28.3%</span>
+                <span class="highlight-label">of managerial positions globally are held by women</span>
+              </div>
+              <p>Maya's industry has plenty of women at entry-level, but her company's executive team remains exclusively male.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-stage" id="conclusion-stage" data-stage="4">
+          <div class="illustration-container">
+            <div class="conclusion-illustration"></div>
+          </div>
+          <div class="stage-narrative">
+            <h3>Breaking Barriers Together</h3>
+            <div class="narrative-text">
+              <p>Together, we can rewrite the story. By understanding the data and taking action, we can create a world where Maya and Noah's paths are truly equal.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>
+
+<section ="story" class "story-section">
+
+  <div class="main-content">
+    <!-- Maya Section -->
+    <div class="character-section maya-section">
+        <svg class="character-svg" viewBox="0 0 200 400">
+            <defs>
+                <linearGradient id="maya-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#b8c5eb;stop-opacity:1" />
+                    <stop offset="18%" style="stop-color:#b8c5eb;stop-opacity:1" />
+                    <stop offset="18%" style="stop-color:#2c3e97;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#2c3e97;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Girl silhouette -->
+            <g id="maya-character" fill="url(#maya-gradient)">
+                <!-- Pigtails -->
+                <circle cx="65" cy="45" r="18"/>
+                <circle cx="135" cy="45" r="18"/>
+                <!-- Pigtail ribbons -->
+                <path d="M50 35 Q45 30 40 35 Q45 40 50 35"/>
+                <path d="M150 35 Q155 30 160 35 Q155 40 150 35"/>
+                
+                <!-- Head -->
+                <circle cx="100" cy="60" r="35"/>
+                
+                <!-- Hair on top -->
+                <path d="M70 30 Q100 20 130 30 Q125 25 100 25 Q75 25 70 30"/>
+                
+                <!-- Neck -->
+                <rect x="90" y="92" width="20" height="15"/>
+                
+                <!-- Upper body/torso -->
+                <ellipse cx="100" cy="130" rx="30" ry="25"/>
+                
+                <!-- Arms -->
+                <ellipse cx="70" cy="140" rx="12" ry="30" transform="rotate(-15 70 140)"/>
+                <ellipse cx="130" cy="140" rx="12" ry="30" transform="rotate(15 130 140)"/>
+                
+                <!-- Hands on hips -->
+                <circle cx="65" cy="165" r="8"/>
+                <circle cx="135" cy="165" r="8"/>
+                
+                <!-- Dress/skirt -->
+                <path d="M75 155 Q100 150 125 155 Q140 170 145 200 Q150 240 140 280 Q135 285 125 285 L75 285 Q65 285 60 280 Q50 240 55 200 Q60 170 75 155"/>
+                
+                <!-- Dress bottom ruffle -->
+                <path d="M60 280 Q70 290 80 285 Q90 290 100 285 Q110 290 120 285 Q130 290 140 285 Q145 290 140 295 L60 295 Q55 290 60 280"/>
+                
+                <!-- Legs -->
+                <ellipse cx="85" cy="320" rx="8" ry="25"/>
+                <ellipse cx="115" cy="320" rx="8" ry="25"/>
+                
+                <!-- Shoes -->
+                <ellipse cx="85" cy="350" rx="15" ry="8"/>
+                <ellipse cx="115" cy="350" rx="15" ry="8"/>
+                
+                <!-- Shoe straps -->
+                <ellipse cx="85" cy="345" rx="12" ry="3"/>
+                <ellipse cx="115" cy="345" rx="12" ry="3"/>
+            </g>
+        </svg>
+        
+        <div class="percentage" id="maya-percentage">82%</div>
+        <div class="character-name">Maya</div>
+        <div class="description" id="maya-description">Potential meets obstacles early</div>
+    </div>
+
+    <!-- Center Content -->
+    <div class="center-content">
+        <div class="comic-panel">
+            <div class="comic-content" id="comic-content">
+                <div class="comic-scene">
+                    <div class="comic-character">👨‍🔬</div>
+                    <div class="speech-bubble" id="speech-text">AT LAST! I SHALL VISIT THE RENAISSANCE!</div>
+                </div>
+                <div class="comic-scene">
+                    <div class="comic-character">🚀</div>
+                    <div class="speech-bubble">ZZZRRT</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tagline-box">
+            <div class="tagline-text" id="tagline">Tagline</div>
+        </div>
+
+        <div class="stage-controls">
+            <div class="stage-dot active" data-stage="birth">1</div>
+            <div class="stage-line"></div>
+            <div class="stage-dot" data-stage="school">2</div>
+            <div class="stage-line"></div>
+            <div class="stage-dot" data-stage="teen">3</div>
+            <div class="stage-line"></div>
+            <div class="stage-dot" data-stage="college">4</div>
+            <div class="stage-line"></div>
+            <div class="stage-dot" data-stage="career">5</div>
+        </div>
+
+        <div class="stage-labels">
+            <div class="stage-label">Birth</div>
+            <div class="stage-label">School</div>
+            <div class="stage-label">Teen</div>
+            <div class="stage-label">College</div>
+            <div class="stage-label">Career</div>
+        </div>
+    </div>
+
+    <!-- Noah Section -->
+    <div class="character-section noah-section">
+        <svg class="character-svg" viewBox="0 0 200 400">
+            <defs>
+                <linearGradient id="noah-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#e6b8d6;stop-opacity:1" />
+                    <stop offset="20%" style="stop-color:#e6b8d6;stop-opacity:1" />
+                    <stop offset="20%" style="stop-color:#c85a9c;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#c85a9c;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            
+            <!-- Boy silhouette -->
+            <g id="noah-character" fill="url(#noah-gradient)">
+                <!-- Messy hair -->
+                <path d="M70 25 Q75 15 80 25 Q85 20 90 30 Q95 15 100 25 Q105 20 110 30 Q115 15 120 25 Q125 20 130 25 Q135 30 130 35 Q125 40 120 35 Q115 45 110 40 Q105 50 100 45 Q95 50 90 45 Q85 45 80 40 Q75 40 70 35 Q65 30 70 25"/>
+                
+                <!-- Head -->
+                <circle cx="100" cy="60" r="35"/>
+                
+                <!-- Neck -->
+                <rect x="90" y="92" width="20" height="15"/>
+                
+                <!-- Upper body/torso -->
+                <ellipse cx="100" cy="135" rx="35" ry="30"/>
+                
+                <!-- Arms -->
+                <ellipse cx="65" cy="145" rx="15" ry="35" transform="rotate(-10 65 145)"/>
+                <ellipse cx="135" cy="145" rx="15" ry="35" transform="rotate(10 135 145)"/>
+                
+                <!-- Hands -->
+                <circle cx="60" cy="175" r="8"/>
+                <circle cx="140" cy="175" r="8"/>
+                
+                <!-- Shorts/pants -->
+                <path d="M70 165 Q100 160 130 165 L135 220 Q130 225 125 220 L115 220 L115 250 Q110 255 105 250 L105 220 L95 220 L95 250 Q90 255 85 250 L85 220 L75 220 Q70 225 65 220 L70 165"/>
+                
+                <!-- Legs -->
+                <ellipse cx="85" cy="285" rx="12" ry="30"/>
+                <ellipse cx="115" cy="285" rx="12" ry="30"/>
+                
+                <!-- Shoes -->
+                <ellipse cx="85" cy="320" rx="18" ry="10"/>
+                <ellipse cx="115" cy="320" rx="18" ry="10"/>
+                
+                <!-- Shoe laces -->
+                <path d="M75 315 Q85 310 95 315"/>
+                <path d="M105 315 Q115 310 125 315"/>
+            </g>
+        </svg>
+        
+        <div class="percentage" id="noah-percentage">80%</div>
+        <div class="character-name">Noah</div>
+        <div class="description" id="noah-description">Steady progress through life</div>
+    </div>
 </div>
-  
-  <!-- MALE JOURNEY -->
-  <div class="journey-column male">
-    <div class="column-header">Noah's Journey</div>
-    <div class="chart-containerBoy" id="chartContainerBoy">
-      <!-- Charts will be generated here -->
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Noah enters the world with the same human potential as Maya, his female counterpart.</div>
-        <div class="narrative">From his earliest days, subtle societal advantages begin to accumulate. In many societies, simply being born male means greater access to resources and opportunities.</div>
-        <div class="stat">Higher rates of under-5 survival in most regions. Sex ratio at birth favors males in many regions.</div>
-        <div class="reflection">In parts of South Asia, Noah's birth is celebrated with special ceremonies and gifts—traditions not always extended to newborn girls.</div>
-        <div class="financial-label">100% potential for financial independence</div>
-      </div>
-    </div>
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Noah begins his education with expectations weighted in his favor.</div>
-        <div class="narrative">While enrollment rates are increasingly equal, Noah's education is often prioritized when family resources are limited. In many contexts, boys receive more teacher attention and encouragement.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/se-prm-enrr" target="_blank">Primary school enrollment rate for boys globally: 89.0% (World Bank, 2020)</a>.</div>
-        <div class="dropoff">Drop-off: <a href="https://genderdata.worldbank.org/topics/education/" target="_blank">Child labor affects 11.2% of boys ages 7-14 vs. 7.8% of girls globally</a>.</div>
-        <div class="reflection">In rural Ethiopia, when times get tough, Noah's family keeps him in school while his sister stays home to help. "He'll need to support a family someday," his parents explain.</div>
-        <div class="financial-label">80% on track for financial independence</div>
+  </section>
 
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Noah navigates adolescence with different social pressures than his female peers.</div>
-        <div class="narrative">While Noah faces his own challenges—including pressure to appear strong and self-sufficient—he generally enjoys greater freedom of movement and fewer domestic responsibilities than girls his age.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/se-sec-enrr" target="_blank">Secondary school enrollment rate for boys globally: 76.5% (World Bank, 2020)</a>.</div>
-        <div class="dropoff">Drop-off: Lower retention rates than girls in 73% of middle and high-income countries.</div>
-        <div class="reflection">In Mexico, Noah struggles with math but is encouraged to persevere because "boys are naturally good at math." The teacher invests extra time helping him improve.</div>
-        <div class="financial-label">70% on track for financial independence</div>
-  
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Noah chooses his field of study with different influences and expectations than Maya faces.</div>
-        <div class="narrative">Though Noah may be less likely to attend university than Maya in some countries, when he does, he's more likely to select higher-paying STEM fields. These choices—shaped by societal expectations—have lasting financial consequences.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/se-ter-enrr" target="_blank">Male tertiary enrollment rate: 36.9% globally vs. 41.7% for females (World Bank, 2020)</a>.</div>
-        <div class="dropoff">Drop-off: Men are less likely to complete tertiary education in 105 countries.</div>
-        <div class="pay-gap">Field advantage: Men make up 65% of STEM students, leading to 26% higher earning potential.</div>
-        <div class="reflection">In Germany, Noah's engineering program is 80% male. He benefits from numerous same-gender mentors and industry connections, never questioning if he belongs in the field.</div>
-        <div class="financial-label">60% on track for financial independence</div>
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Noah enters the workforce with built-in advantages he may not even recognize.</div>
-        <div class="narrative">Noah's transition to employment comes with fewer barriers—from hiring practices that favor male candidates to workplace cultures designed by and for men. These advantages translate into immediate financial benefits.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-tlf-totl-in" target="_blank">Male labor force participation rate: 72.2% globally vs. 46.9% for women (World Bank, 2022)</a>.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-uem-1524-fm-zs" target="_blank">Unemployment rates for young men (15-24): 14.7% globally, 1.2x lower than for young women</a> (World Bank, 2022).</div>
-        <div class="pay-gap">Wage premium: Men earn on average 16% more than women in entry-level positions.</div>
-        <div class="societal-expectations">Men spend <a href="https://genderdata.worldbank.org/topics/unpaid-care-and-domestic-work/" target="_blank">1-2 hours daily on household tasks vs. 3-6 hours for women</a> (World Bank Gender Data), allowing more time for career advancement.</div>
-        <div class="reflection">In Japan, Noah is viewed as a "long-term investment" by his company. He regularly joins senior colleagues for after-hours socializing that builds valuable connections, with no expectation to rush home for family responsibilities.</div>
-        <div class="financial-label">60% achieve financial independence</div>
-      </div>
-    </div>
-    
-    <div class="stage">
-      <div class="stage-info">
-        <div class="persona">Noah's career trajectory faces fewer structural barriers than Maya's path.</div>
-        <div class="narrative">As Noah advances professionally, he benefits from homogeneous networks and leadership stereotypes that favor traits associated with masculinity. His path upward, while not guaranteed, has fewer systemic obstacles.</div>
-        <div class="stat"><a href="https://genderdata.worldbank.org/en/indicator/sl-emp-smgt-ma-zs" target="_blank">Men hold 71.7% of managerial positions globally (World Bank, 2022)</a>.</div>
-        <div class="dropoff">77% of firms have a male top manager.</div>
-        <div class="pay-gap">Men earn 20-28% more than women at equivalent career levels, widening with seniority.</div>
-        <div class="societal-expectations">Fathers see a <a href="https://genderdata.worldbank.org/topics/economic-opportunity/" target="_blank">6% average increase in earnings after having children, while mothers experience an average 4% decrease</a> (World Bank, 2021).</div>
-        <div class="reflection">In the UAE, Noah's assertive communication style is labeled "leadership potential," while the same behavior from female colleagues is often deemed "too aggressive." After becoming a father, colleagues congratulate him and senior leaders begin mentoring him for executive roles.</div>
-        <div class="financial-label">60% achieve full financial equity</div>
 
+
+<section id
+<!-- Global Gender Landscape Section -->
+
+<div class="container">
+<section class="section global-gender-landscape">
+  <h2>Global Gender Landscape</h2>
+  <div class="landscape-cards">
+      <div class="landscape-card">
+          <div class="emoji">🎓</div>
+          <div class="landscape-title">Education</div>
+          <div class="progress-bar"><div class="progress" style="width:89.6%"></div></div>
+          <div class="landscape-stat">89.6% of girls enrolled in primary education globally</div>
+      </div>
+      <div class="landscape-card">
+          <div class="emoji">💼</div>
+          <div class="landscape-title">Workforce</div>
+          <div class="progress-bar"><div class="progress" style="width:46.9%"></div></div>
+          <div class="landscape-stat">46.9% female labor force participation rate</div>
+      </div>
+      <div class="landscape-card">
+          <div class="emoji">👑</div>
+          <div class="landscape-title">Leadership</div>
+          <div class="progress-bar"><div class="progress" style="width:28.3%"></div></div>
+          <div class="landscape-stat">28.3% of managerial positions held by women</div>
+      </div>
+      <div class="landscape-card">
+          <div class="emoji">💰</div>
+          <div class="landscape-title">Pay Gap</div>
+          <div class="progress-bar"><div class="progress" style="width:84%"></div></div>
+          <div class="landscape-stat">Women earn 84 cents for every dollar men earn</div>
+      </div>
+  </div>
+</section>
+
+<!-- Data Journey Section -->
+<section id="data" class="data-section">
+  <div class="container">
+    <h2>Explore the Data Behind the Story</h2>
+    <p class="section-intro">Dive deeper into the statistics that shape Maya and Noah's journey. Use our interactive tools to discover patterns, trends, and opportunities for intervention.</p>
+    
+    <div class="data-explorer">
+      <div class="explorer-controls">
+        <div class="control-group">
+          <label>Choose Your Focus:</label>
+          <select id="dataFocus" class="data-select">
+            <option value="education">Education Journey</option>
+            <option value="workforce">Workforce Participation</option>
+            <option value="leadership">Leadership Pipeline</option>
+            <option value="paygap">Pay Equity</option>
+          </select>
+        </div>
+        <div class="control-group">
+          <label>Select Region:</label>
+          <select id="dataRegion" class="data-select">
+            <option value="global">Global Overview</option>
+            <option value="europe">Europe & Central Asia</option>
+            <option value="asia">East Asia & Pacific</option>
+            <option value="africa">Sub-Saharan Africa</option>
+            <option value="americas">Latin America & Caribbean</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="data-visualization">
+        <div class="chart-container">
+          <canvas id="mainDataChart"></canvas>
+        </div>
+        <div class="data-insights">
+          <h3 id="chartTitle">Education Journey</h3>
+          <p id="chartDescription">Explore how educational opportunities differ between genders across different stages of learning.</p>
+          <div class="insight-cards">
+            <div class="insight-card">
+              <div class="insight-icon">📊</div>
+              <div class="insight-content">
+                <h4>Key Finding</h4>
+                <p id="keyFinding">Primary education enrollment is nearly equal globally, but gaps widen at higher levels.</p>
+              </div>
+            </div>
+            <div class="insight-card">
+              <div class="insight-icon">🔮</div>
+              <div class="insight-content">
+                <h4>AI Prediction</h4>
+                <p id="aiPrediction">At current rates, gender parity in tertiary education will be achieved by 2035.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="journey-conclusion">
-  <h3 style="text-align: center; margin-top: 0;">A Tale of Two Journeys</h3>
-  <!-- Paragraphs will be revealed one by one with typewriter effect -->
-  <p>Maya and Noah's parallel stories illustrate how gender disparities manifest across the lifespan. What begins as subtle differences in childhood—the toys they're given, the behaviors encouraged, the expectations set—magnifies over time into significant economic divides.</p>
-  
-  <p>The data from the World Bank Gender Data Portal reveals that gender gaps in education directly translate to workforce disparities. But the workplace introduces additional barriers—harassment, unequal caregiving expectations, and subtle biases—that disproportionately affect women's advancement.</p>
-  
-  <p>By the time Maya and Noah reach their career peaks, the accumulated effect of these disparities is stark. For every 100 men who achieve economic independence, only 30 women reach the same milestone. For every 100 men in leadership roles, only 28 women share that achievement.</p>
-  
-  <p>The motherhood penalty and fatherhood premium create diverging trajectories for parents: after having children, women's career prospects often diminish while men's frequently improve. This reflects deeply embedded societal expectations about caregiving that continue to shape workforce outcomes.</p>
-  
-  <div class="call-to-action">The path to gender equality requires intervention at every stage—from early education to corporate leadership—and must address both workplace barriers and societal expectations around unpaid care work.</div>
-  
-  <!-- Action steps will be revealed by a button after all paragraphs -->
-  <div class="action-steps">
-    <h4>Closing the Gap: What We Can Do</h4>
-    <ul>
-      <li><strong>Early Education:</strong> Challenge gender stereotypes in classrooms and learning materials. Encourage girls in STEM subjects and boys in empathy-building activities.</li>
-      <li><strong>Workplace Policy:</strong> Implement transparent pay practices, flexible work arrangements, and paid parental leave for all genders.</li>
-      <li><strong>Leadership Development:</strong> Create mentorship programs specifically designed to support women's advancement into leadership roles.</li>
-      <li><strong>Shared Care Work:</strong> Promote equal distribution of unpaid care work through policy, social norms, and institutional support.</li>
-      <li><strong>Data-Driven Decisions:</strong> Continue collecting and analyzing gender-disaggregated data to identify gaps and measure progress.</li>
-    </ul>
+<!-- AI Insights Section -->
+<section id="insights" class="insights-section">
+  <div class="container">
+    <h2>AI-Powered Insights</h2>
+    <p class="section-intro">Our artificial intelligence analyzes patterns in gender data to reveal hidden trends and predict future scenarios.</p>
+    
+    <div class="ai-insights-grid">
+      <div class="ai-insight">
+        <div class="insight-header">
+          <span class="ai-icon">🤖</span>
+          <h3>Trend Analysis</h3>
+        </div>
+        <div class="insight-chart">
+          <canvas id="trendChart"></canvas>
+        </div>
+        <div class="insight-text">
+          <p>AI analysis reveals that while education gaps are closing, workforce participation disparities are widening in certain regions.</p>
+        </div>
+      </div>
+      
+      <div class="ai-insight">
+        <div class="insight-header">
+          <span class="ai-icon">🔮</span>
+          <h3>Future Predictions</h3>
+        </div>
+        <div class="insight-chart">
+          <canvas id="predictionChart"></canvas>
+        </div>
+        <div class="insight-text">
+          <p>Without intervention, the gender pay gap will persist until 2089. With targeted policies, we could achieve parity by 2050.</p>
+        </div>
+      </div>
+      
+      <div class="ai-insight">
+        <div class="insight-header">
+          <span class="ai-icon">💡</span>
+          <h3>Intervention Opportunities</h3>
+        </div>
+        <div class="insight-chart">
+          <canvas id="interventionChart"></canvas>
+        </div>
+        <div class="insight-text">
+          <p>Early childhood education programs show the highest return on investment for reducing gender disparities.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="micro-actions-note">
-  <h4>Breaking Stereotypes in Small Ways</h4>
-  Did you notice that throughout this visualization, we used <span class="highlight-blue">blue</span> for Maya and <span class="highlight-pink">pink</span> for Noah—intentionally reversing traditional color associations?</p>
-  
-  Gender equality isn't just built through policy changes—it begins with challenging our unconscious biases in everyday decisions. The colors we assign to children, the toys we select, the language we use, and the behaviors we encourage all shape how gender roles evolve.</p>
-  
-  <div class="closing-thought">What small stereotype will you challenge today?</div>
+</section>
+
+<!-- Hackathon Section -->
+<section id="hackathon" class="hackathon-section">
+  <div class="container">
+    <div class="hackathon-header">
+      <h2>🚀 Hack Our Story</h2>
+      <p class="hackathon-subtitle">Transform Data into Compelling Narratives</p>
+    </div>
+    
+    <div class="hackathon-challenge">
+      <div class="challenge-intro">
+        <h3>The Challenge</h3>
+        <p>Use the World Bank gender data to create innovative solutions that tell compelling stories about gender equality. Your solution can be:</p>
+      </div>
+      
+      <div class="solution-categories">
+        <div class="category-card">
+          <div class="category-icon">🤖</div>
+          <h4>AI-Powered Insights</h4>
+          <p>Develop machine learning models to predict trends, identify intervention points, or create personalized recommendations.</p>
+          <div class="category-examples">
+            <span>Predictive Analytics</span>
+            <span>Pattern Recognition</span>
+            <span>Personalized Insights</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">📊</div>
+          <h4>Data Visualizations</h4>
+          <p>Create compelling visual stories that make complex gender data accessible and engaging for diverse audiences.</p>
+          <div class="category-examples">
+            <span>Interactive Dashboards</span>
+            <span>Storytelling Charts</span>
+            <span>Immersive Experiences</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">🎭</div>
+          <h4>Creative Narratives</h4>
+          <p>Develop awareness campaigns, storytelling platforms, or creative content that brings gender data to life.</p>
+          <div class="category-examples">
+            <span>Digital Storytelling</span>
+            <span>Awareness Campaigns</span>
+            <span>Educational Content</span>
+          </div>
+        </div>
+        
+        <div class="category-card">
+          <div class="category-icon">💡</div>
+          <h4>Innovative Solutions</h4>
+          <p>Build any tech or non-tech solution that uses gender data to drive meaningful change and awareness.</p>
+          <div class="category-examples">
+            <span>Mobile Applications</span>
+            <span>Policy Tools</span>
+            <span>Community Platforms</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hackathon-resources">
+      <h3>Resources to Get Started</h3>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h4>📚 Data Sources</h4>
+          <ul>
+            <li><a href="https://genderdata.worldbank.org" target="_blank">World Bank Gender Data Portal</a></li>
+            <li><a href="https://libguides.utdallas.edu/Data/Women" target="_blank">UTD Women's Data Guide</a></li>
+            <li><a href="https://data.worldbank.org" target="_blank">World Bank Open Data</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <h4>🛠️ Tools & APIs</h4>
+          <ul>
+            <li>Chart.js for Visualizations</li>
+            <li>Python/R for Data Analysis</li>
+            <li>Tableau for Dashboards</li>
+            <li>AI/ML Libraries</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <h4>📖 Storytelling Guides</h4>
+          <ul>
+            <li>Data Storytelling Best Practices</li>
+            <li>Narrative Arc Templates</li>
+            <li>Audience Engagement Strategies</li>
+            <li>Visual Design Principles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hackathon-cta">
+      <h3>Ready to Hack Our Story?</h3>
+      <p>Join us in transforming gender data into compelling narratives that drive change and inspire action.</p>
+      <div class="cta-buttons">
+        <a href="https://genderdata.worldbank.org" target="_blank" class="cta-btn primary">Explore Data Portal</a>
+        <a href="https://libguides.utdallas.edu/Data/Women" target="_blank" class="cta-btn secondary">Access Resources</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Hack Our Story</h3>
+        <p>Transforming gender data into compelling narratives for change.</p>
+        <div class="social-links">
+          <span>🚀</span>
+          <span>📊</span>
+          <span>🎭</span>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Data Sources</h3>
+        <ul>
+          <li><a href="https://genderdata.worldbank.org" target="_blank">World Bank Gender Data Portal</a></li>
+          <li><a href="https://libguides.utdallas.edu/Data/Women" target="_blank">UTD Women's Data Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#story">The Story</a></li>
+          <li><a href="#data">Data Journey</a></li>
+          <li><a href="#insights">AI Insights</a></li>
+          <li><a href="#hackathon">Hackathon</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Hack Our Story. Data-driven storytelling for gender equality.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Conclusion & Solutions -->
+<section class="section close-gap-section">
+  <div class="close-gap-illustration" style="text-align:center; margin-bottom:2rem;">
+    <!-- SVG: Maya and Noah breaking a barrier together -->
+    <svg width="180" height="100" viewBox="0 0 180 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="30" fill="#7da6e3"/>
+      <circle cx="130" cy="50" r="30" fill="#e37da6"/>
+      <rect x="80" y="40" width="20" height="20" rx="5" fill="#FFD700"/>
+      <rect x="90" y="60" width="4" height="20" fill="#FFD700"/>
+      <text x="50" y="55" font-size="18" text-anchor="middle" fill="#fff">M</text>
+      <text x="130" y="55" font-size="18" text-anchor="middle" fill="#fff">N</text>
+    </svg>
+    <h2 style="margin-top:1.5rem;">How Can We Close the Gap?</h2>
+    <p style="max-width:600px; margin:0 auto; color:#555; font-size:1.15rem;">Closing the gender gap requires bold, creative, and collective action. Here are some high-impact solutions that can help build a fairer future for everyone.</p>
+  </div>
+  <div class="solutions-grid">
+    <div class="solution-card">
+      <div class="solution-icon">🎓</div>
+      <h3>STEM Bootcamps for Girls</h3>
+      <p>Launch free, nationwide STEM bootcamps and mentorships to empower girls in tech and science fields.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">🤖</div>
+      <h3>AI Bias Audits</h3>
+      <p>Mandate regular AI and algorithm audits to detect and reduce gender bias in hiring, pay, and promotion.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">👩‍💼</div>
+      <h3>Mentorship Networks</h3>
+      <p>Expand cross-gender mentorship and sponsorship programs to accelerate women's advancement into leadership.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">👨‍👧‍👦</div>
+      <h3>Parental Leave for All</h3>
+      <p>Guarantee paid parental leave for all genders to support shared caregiving and reduce the motherhood penalty.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">💼</div>
+      <h3>Flexible Work by Default</h3>
+      <p>Make flexible and remote work the default, not the exception, to support caregivers and close the gap.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">💸</div>
+      <h3>Transparent Pay Reporting</h3>
+      <p>Require companies to publish pay gap data and action plans to drive accountability and progress.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">🤝</div>
+      <h3>Men as Allies</h3>
+      <p>Engage men as allies and advocates for gender equity through training, storytelling, and leadership.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">📊</div>
+      <h3>Data-Driven Decisions</h3>
+      <p>Use real-time, gender-disaggregated data to identify gaps, measure progress, and inform policy.</p>
+    </div>
+    <div class="solution-card">
+      <div class="solution-icon">🌍</div>
+      <h3>Global Policy Collaboration</h3>
+      <p>Promote international collaboration on gender equity policies, sharing best practices and innovations.</p>
+    </div>
+  </div>
+</section>
 </div>
 
-</div>
-
-<div style="text-align: center; margin-top: 30px; color: #777; font-size: 0.9em;">
-  All data sourced from <a href="https://genderdata.worldbank.org" target="_blank">the World Bank Gender Data Portal (2020-2022)</a><br>
-  Gender Statistics Database: <a href="https://genderdata.worldbank.org" target="_blank">https://genderdata.worldbank.org</a><br>
-  Note: Financial independence percentages derived from <a href="https://genderdata.worldbank.org/topics/financial-inclusion/" target="_blank">World Bank Global Findex Database</a> and <a href="https://ilostat.ilo.org/topics/women/" target="_blank">ILO data</a>.
-</div>
-
-<div class="end-journey-footer">
-  <button onclick="skipToConclusion()" class="end-journey-btn-large">View Journey Conclusion</button>
-</div>
 </body>
+
+
+<!-- Footer -->
+<footer>
+    <p>Data sourced from <a href="https://genderdata.worldbank.org" target="_blank">World Bank Gender Data Portal</a></p>
+    <p>Created for SheRises Hackathon 2024</p>
+</footer>
+
+
 </html>
