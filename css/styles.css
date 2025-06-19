@@ -1043,7 +1043,7 @@ img[class*="comic"] {
 }
 
 #education-stage .illustration-container {
-    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+    /* background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); */
 }
 
 #career-stage .illustration-container {

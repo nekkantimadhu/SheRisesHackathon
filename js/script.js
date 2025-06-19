@@ -1713,8 +1713,8 @@ function setupScrollAnimations() {
       });
   }, observerOptions);
   
-  // Observe all animated elements
-  const animatedElements = document.querySelectorAll('.category-card, .ai-insight, .resource-card, .story-stage');
+  // Only animate cards and insights, not story-stage
+  const animatedElements = document.querySelectorAll('.category-card, .ai-insight, .resource-card');
   animatedElements.forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
@@ -1808,23 +1808,6 @@ function typeWriter(element, text, speed = 50) {
   
   type();
 }
-
-// Initialize typing effects when story stages become active
-const storyObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(entry => {
-      if (entry.isIntersecting) {
-          const narrativeText = entry.target.querySelector('.narrative-text p');
-          if (narrativeText && !narrativeText.classList.contains('typed')) {
-              narrativeText.classList.add('typed');
-              typeWriter(narrativeText, narrativeText.textContent, 30);
-          }
-      }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.story-stage').forEach(stage => {
-  storyObserver.observe(stage);
-});
 
 // --- Update stageData with unified keys ---
 const stageData = {
