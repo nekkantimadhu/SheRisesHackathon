@@ -2109,6 +2109,15 @@ chart-container {
   margin-top: 40px;
   flex-wrap: wrap;
 }
+.chart-containerGirl {
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+  gap: 30px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+ 
  
 .chart-containerBoy {
   display: flex;
@@ -2306,3 +2315,8 @@ chart-container {
     left: 0;
     z-index: 1;
 }
+
+
+/* equality code */
+
+
