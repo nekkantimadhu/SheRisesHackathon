@@ -8,6 +8,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/script.js"></script>
 <script src="js/comic-illustrations.js"></script>
+<script src="js/svg-creation.js"></script>
 </head>
 <body>
 <!-- Home Image Hero Section -->
@@ -65,7 +66,7 @@
   <div class="container">
     <div class="story-intro">
       <h2>The Tale of Two Paths</h2>
-      <p class="story-opening">In a world where data shapes destinies, two lives begin with equal potential. But as they journey through life, subtle differences accumulate into profound disparities. This is the story of Maya and Noah, and the data that tells their tale.</p>
+      <p class="story-opening">In a world where data shapes destinies, two lives begin with equal potential. But as they journey through life, subtle differences accumulate into profound disparities. This is the story of Maya and Michael, and the data that tells their tale.</p>
     </div>
     
     <!-- Interactive Story Journey -->
@@ -112,7 +113,7 @@
           <div class="stage-narrative">
             <h3>The Learning Divide</h3>
             <div class="narrative-text">
-              <p>As Maya and Noah begin their educational journey, the gaps start to widen. While enrollment rates are increasingly equal, the quality and continuation of education tell a different story.</p>
+              <p>As Maya and Michael begin their educational journey, the gaps start to widen. While enrollment rates are increasingly equal, the quality and continuation of education tell a different story.</p>
               <div class="data-highlight">
                 <span class="highlight-number">5.5M</span>
                 <span class="highlight-label">more girls than boys out of school at secondary level in low-income countries</span>
@@ -133,7 +134,7 @@
           <div class="stage-narrative">
             <h3>The Career Crossroads</h3>
             <div class="narrative-text">
-              <p>Despite equal qualifications, Maya and Noah's career paths diverge dramatically. The workplace introduces barriers that Maya never anticipated.</p>
+              <p>Despite equal qualifications, Maya and Michael's career paths diverge dramatically. The workplace introduces barriers that Maya never anticipated.</p>
               <div class="data-highlight">
                 <span class="highlight-number">84¢</span>
                 <span class="highlight-label">women earn for every dollar men earn in their first jobs</span>
@@ -154,7 +155,7 @@
           <div class="stage-narrative">
             <h3>The Leadership Labyrinth</h3>
             <div class="narrative-text">
-              <p>As they reach the pinnacle of their careers, Maya faces the glass ceiling while Noah benefits from networks and opportunities designed for people like him.</p>
+              <p>As they reach the pinnacle of their careers, Maya faces the glass ceiling while Michael  benefits from networks and opportunities designed for people like him.</p>
               <div class="data-highlight">
                 <span class="highlight-number">28.3%</span>
                 <span class="highlight-label">of managerial positions globally are held by women</span>
@@ -171,7 +172,7 @@
           <div class="stage-narrative">
             <h3>Breaking Barriers Together</h3>
             <div class="narrative-text">
-              <p>Together, we can rewrite the story. By understanding the data and taking action, we can create a world where Maya and Noah's paths are truly equal.</p>
+              <p>Together, we can rewrite the story. By understanding the data and taking action, we can create a world where Maya and Michael's paths are truly equal.</p>
             </div>
           </div>
         </div>
@@ -185,65 +186,9 @@
   <div class="main-content">
     <!-- Maya Section -->
     <div class="character-section maya-section">
-        <svg class="character-svg" viewBox="0 0 200 400">
-            <defs>
-                <linearGradient id="maya-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#b8c5eb;stop-opacity:1" />
-                    <stop offset="18%" style="stop-color:#b8c5eb;stop-opacity:1" />
-                    <stop offset="18%" style="stop-color:#2c3e97;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#2c3e97;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-            
-            <!-- Girl silhouette -->
-            <g id="maya-character" fill="url(#maya-gradient)">
-                <!-- Pigtails -->
-                <circle cx="65" cy="45" r="18"/>
-                <circle cx="135" cy="45" r="18"/>
-                <!-- Pigtail ribbons -->
-                <path d="M50 35 Q45 30 40 35 Q45 40 50 35"/>
-                <path d="M150 35 Q155 30 160 35 Q155 40 150 35"/>
-                
-                <!-- Head -->
-                <circle cx="100" cy="60" r="35"/>
-                
-                <!-- Hair on top -->
-                <path d="M70 30 Q100 20 130 30 Q125 25 100 25 Q75 25 70 30"/>
-                
-                <!-- Neck -->
-                <rect x="90" y="92" width="20" height="15"/>
-                
-                <!-- Upper body/torso -->
-                <ellipse cx="100" cy="130" rx="30" ry="25"/>
-                
-                <!-- Arms -->
-                <ellipse cx="70" cy="140" rx="12" ry="30" transform="rotate(-15 70 140)"/>
-                <ellipse cx="130" cy="140" rx="12" ry="30" transform="rotate(15 130 140)"/>
-                
-                <!-- Hands on hips -->
-                <circle cx="65" cy="165" r="8"/>
-                <circle cx="135" cy="165" r="8"/>
-                
-                <!-- Dress/skirt -->
-                <path d="M75 155 Q100 150 125 155 Q140 170 145 200 Q150 240 140 280 Q135 285 125 285 L75 285 Q65 285 60 280 Q50 240 55 200 Q60 170 75 155"/>
-                
-                <!-- Dress bottom ruffle -->
-                <path d="M60 280 Q70 290 80 285 Q90 290 100 285 Q110 290 120 285 Q130 290 140 285 Q145 290 140 295 L60 295 Q55 290 60 280"/>
-                
-                <!-- Legs -->
-                <ellipse cx="85" cy="320" rx="8" ry="25"/>
-                <ellipse cx="115" cy="320" rx="8" ry="25"/>
-                
-                <!-- Shoes -->
-                <ellipse cx="85" cy="350" rx="15" ry="8"/>
-                <ellipse cx="115" cy="350" rx="15" ry="8"/>
-                
-                <!-- Shoe straps -->
-                <ellipse cx="85" cy="345" rx="12" ry="3"/>
-                <ellipse cx="115" cy="345" rx="12" ry="3"/>
-            </g>
-        </svg>
-        
+      <div class="chart-containerGirl" id="chartContainerGirl">
+        <!-- Charts will be generated here -->
+     </div>
         <div class="percentage" id="maya-percentage">82%</div>
         <div class="character-name">Maya</div>
         <div class="description" id="maya-description">Potential meets obstacles early</div>
@@ -294,57 +239,13 @@
 
     <!-- Noah Section -->
     <div class="character-section noah-section">
-        <svg class="character-svg" viewBox="0 0 200 400">
-            <defs>
-                <linearGradient id="noah-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#e6b8d6;stop-opacity:1" />
-                    <stop offset="20%" style="stop-color:#e6b8d6;stop-opacity:1" />
-                    <stop offset="20%" style="stop-color:#c85a9c;stop-opacity:1" />
-                    <stop offset="100%" style="stop-color:#c85a9c;stop-opacity:1" />
-                </linearGradient>
-            </defs>
-            
-            <!-- Boy silhouette -->
-            <g id="noah-character" fill="url(#noah-gradient)">
-                <!-- Messy hair -->
-                <path d="M70 25 Q75 15 80 25 Q85 20 90 30 Q95 15 100 25 Q105 20 110 30 Q115 15 120 25 Q125 20 130 25 Q135 30 130 35 Q125 40 120 35 Q115 45 110 40 Q105 50 100 45 Q95 50 90 45 Q85 45 80 40 Q75 40 70 35 Q65 30 70 25"/>
-                
-                <!-- Head -->
-                <circle cx="100" cy="60" r="35"/>
-                
-                <!-- Neck -->
-                <rect x="90" y="92" width="20" height="15"/>
-                
-                <!-- Upper body/torso -->
-                <ellipse cx="100" cy="135" rx="35" ry="30"/>
-                
-                <!-- Arms -->
-                <ellipse cx="65" cy="145" rx="15" ry="35" transform="rotate(-10 65 145)"/>
-                <ellipse cx="135" cy="145" rx="15" ry="35" transform="rotate(10 135 145)"/>
-                
-                <!-- Hands -->
-                <circle cx="60" cy="175" r="8"/>
-                <circle cx="140" cy="175" r="8"/>
-                
-                <!-- Shorts/pants -->
-                <path d="M70 165 Q100 160 130 165 L135 220 Q130 225 125 220 L115 220 L115 250 Q110 255 105 250 L105 220 L95 220 L95 250 Q90 255 85 250 L85 220 L75 220 Q70 225 65 220 L70 165"/>
-                
-                <!-- Legs -->
-                <ellipse cx="85" cy="285" rx="12" ry="30"/>
-                <ellipse cx="115" cy="285" rx="12" ry="30"/>
-                
-                <!-- Shoes -->
-                <ellipse cx="85" cy="320" rx="18" ry="10"/>
-                <ellipse cx="115" cy="320" rx="18" ry="10"/>
-                
-                <!-- Shoe laces -->
-                <path d="M75 315 Q85 310 95 315"/>
-                <path d="M105 315 Q115 310 125 315"/>
-            </g>
-        </svg>
+      
+        <div class="chart-containerBoy" id="chartContainerBoy">
+       <!-- Charts will be generated here -->
+     </div>
         
         <div class="percentage" id="noah-percentage">80%</div>
-        <div class="character-name">Noah</div>
+        <div class="character-name">Michael</div>
         <div class="description" id="noah-description">Steady progress through life</div>
     </div>
 </div>
@@ -436,7 +337,7 @@
 <section id="data" class="data-section">
   <div class="container">
     <h2>Explore the Data Behind the Story</h2>
-    <p class="section-intro">Dive deeper into the statistics that shape Maya and Noah's journey. Use our interactive tools to discover patterns, trends, and opportunities for intervention.</p>
+    <p class="section-intro">Dive deeper into the statistics that shape Maya and Michael's journey. Use our interactive tools to discover patterns, trends, and opportunities for intervention.</p>
     
     <div class="data-explorer">
       <div class="explorer-controls">
@@ -624,15 +525,7 @@
 <!-- Conclusion & Solutions -->
 <section class="section close-gap-section">
   <div class="close-gap-illustration" style="text-align:center; margin-bottom:2rem;">
-    <!-- SVG: Maya and Noah breaking a barrier together -->
-    <svg width="180" height="100" viewBox="0 0 180 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="30" fill="#7da6e3"/>
-      <circle cx="130" cy="50" r="30" fill="#e37da6"/>
-      <rect x="80" y="40" width="20" height="20" rx="5" fill="#FFD700"/>
-      <rect x="90" y="60" width="4" height="20" fill="#FFD700"/>
-      <text x="50" y="55" font-size="18" text-anchor="middle" fill="#fff">M</text>
-      <text x="130" y="55" font-size="18" text-anchor="middle" fill="#fff">N</text>
-    </svg>
+    <img src="assets/images/gap2.png" alt="Closing the gender gap" style="width:180px; height:180px; object-fit:cover; margin:0 auto 1.5rem; display:block; border-radius:50%; box-shadow:0 2px 16px #0001;" />
     <h2 style="margin-top:1.5rem;">How Can We Close the Gap?</h2>
     <p style="max-width:600px; margin:0 auto; color:#555; font-size:1.15rem;">Closing the gender gap requires bold, creative, and collective action. Here are some high-impact solutions that can help build a fairer future for everyone.</p>
   </div>
@@ -686,7 +579,7 @@
 </section>
 <!-- Minimal, Appealing Footer (Comic Card Style) -->
 <footer class="footer-minimal" style="background: #f5f6fa; border-top: 1px solid #ececec; padding: 2.5rem 0 2rem 0; text-align: center; margin-top: 4rem;">
-  <h2 style="font-size:1.6rem;font-weight:700;color:#222;margin-bottom:2.2rem;">Meet the Hackathon Heroes! 💻🦸‍♀️🦸‍♂️</h2>
+  <h2 style="font-size:1.6rem;font-weight:700;color:#222;margin-bottom:2.2rem;">Lines of Code! Layers of Her Story By</h2>
   <section style="display:flex;justify-content:center;align-items:stretch;gap:2.5rem;flex-wrap:wrap;">
     <!-- Card 1 -->
     <div style="background:#fff;border:3px solid #222;border-radius:18px;box-shadow:0 4px 18px #0001;padding:2.2rem 2rem 1.5rem 2rem;min-width:220px;max-width:260px;display:flex;flex-direction:column;align-items:center;">
@@ -710,8 +603,50 @@
       <div style="background:#fff;border:2.5px solid #222;border-radius:18px 18px 18px 0;padding:0.7rem 1.1rem;font-size:1.05rem;color:#222;font-family:'Comic Sans MS','Comic Sans',cursive,sans-serif;box-shadow:0 2px 8px #0001;min-width:120px;text-align:left;">💬 "Deploy, break, repeat!"</div>
     </div>
   </section>
+
+  <!-- Minimal Contact Info -->
+  <div class="footer-contact" style="margin-top:2.5rem; font-size:0.98rem; color:#ccc;">
+    <div style="margin-bottom:0.8rem;">
+      <!-- <strong>Email:</strong> <a href="mailto:team@sherises.ai" style="color:#fff;text-decoration:none;">team@sherises.ai</a> -->
+       <strong><a href="🔗 nekkantimadhu.github.io/SheRisesHackathon">🔗 nekkantimadhu.github.io/SheRisesHackathon</a></strong>
+      <p>© 2025 Hack Our Story. Data-driven storytelling for gender equality.</p>
+    </div>
+    <!-- <div style="display:flex; gap:1.2rem; justify-content:center;">
+      <a href="#" aria-label="Twitter" style="color:#fff;font-size:1.2rem;">🐦</a>
+      <a href="#" aria-label="LinkedIn" style="color:#fff;font-size:1.2rem;">🔗</a>
+      <a href="#" aria-label="Instagram" style="color:#fff;font-size:1.2rem;">📸</a>
+    </div> -->
+  </div>
 </footer>
 
+<!-- Floating Chat Button -->
+<button id="chat-toggle" class="chat-toggle" aria-label="Open chat">
+  <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <!-- back bubble -->
+    <path fill="currentColor" opacity="0.8" d="M7 2h12c0.55 0 1 0.45 1 1v9c0 0.55-0.45 1-1 1h-4l-4 3v-3H7c-0.55 0-1-0.45-1-1V3c0-0.55 0.45-1 1-1z"/>
+    <!-- front bubble -->
+    <path fill="currentColor" d="M4 6h12c0.55 0 1 0.45 1 1v9c0 0.55-0.45 1-1 1h-4l-4 3v-3H4c-0.55 0-1-0.45-1-1V7c0-0.55 0.45-1 1-1z"/>
+  </svg>
+</button>
+
+<!-- Chatbox (starts hidden) -->
+<div id="chatbox" class="chatbox">
+  <div class="chat-header">
+    <span>SheRises Live Chat</span>
+    <button id="chat-close" class="chat-close" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-message bot">Hi! How can we help you today?</div>
+    <div class="sample-questions">
+      <button class="sample-btn">What is gender equality?</button>
+      <button class="sample-btn">Show me global stats</button>
+      <button class="sample-btn">How can I help?</button>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input type="text" id="chat-input-field" placeholder="Write a message…" disabled>
+  </div>
+</div>
 
 </div>
 

@@ -4,7 +4,7 @@ const colors = [
 ];
 
 function updateChartGirl(percent = 100) {
-  const container = document.getElementById('chartContainer');
+  const container = document.getElementById('chartContainerGirl');
   container.innerHTML = '';
 
   const percentage = parseInt(percent)|| 0;
@@ -67,7 +67,7 @@ function updateChartGirl(percent = 100) {
   categoryLabel.className = 'category-label';
 
   barItem.appendChild(silhouette);
-  barItem.appendChild(percentLabel); // Add the percent label
+  // barItem.appendChild(percentLabel); // Add the percent label
   barItem.appendChild(categoryLabel);
   container.appendChild(barItem);
 }
@@ -136,7 +136,7 @@ function updateChartBoy(percent = 100) {
   categoryLabel.className = 'category-label-boy';
 
   barItem.appendChild(silhouette);
-  barItem.appendChild(percentLabel); // Add the percent label
+  // barItem.appendChild(percentLabel); // Add the percent label
   barItem.appendChild(categoryLabel);
   container.appendChild(barItem);
 }
@@ -323,12 +323,12 @@ setTimeout(initializeNavigation, 1000);
 
 // Function to match the height of the chart spacer with chart containers
 function matchChartSpacerHeight() {
-const chartContainer = document.getElementById('chartContainer');
+const chartContainerGirl = document.getElementById('chartContainerGirl');
 const chartContainerBoy = document.getElementById('chartContainerBoy');
 const chartSpacer = document.querySelector('.chart-spacer');
 
-if (chartContainer && chartContainerBoy && chartSpacer) {
-  const femaleHeight = chartContainer.offsetHeight;
+if (chartContainerGirl && chartContainerBoy && chartSpacer) {
+  const femaleHeight = chartContainerGirl.offsetHeight;
   const maleHeight = chartContainerBoy.offsetHeight;
   const maxHeight = Math.max(femaleHeight, maleHeight);
   
@@ -451,7 +451,7 @@ if (typeof ResizeObserver !== 'undefined') {
   });
   
   // Also observe chart containers
-  const chartContainer = document.getElementById('chartContainer');
+  const chartContainerGirl = document.getElementById('chartContainerGirl');
   const chartContainerBoy = document.getElementById('chartContainerBoy');
   if (chartContainer) resizeObserver.observe(chartContainer);
   if (chartContainerBoy) resizeObserver.observe(chartContainerBoy);
@@ -1082,10 +1082,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  renderRegionalRadarChart('radar-europe', [92, 65, 35]);
-  renderRegionalRadarChart('radar-asia', [88, 58, 28]);
-  renderRegionalRadarChart('radar-africa', [82, 45, 22]);
-  renderRegionalRadarChart('radar-america', [90, 52, 31]);
+  renderRegionalRadarChart('radar-europe', [92, 70, 55]);
+  renderRegionalRadarChart('radar-asia', [88, 60, 35]);
+  renderRegionalRadarChart('radar-africa', [75, 40, 20]);
+  renderRegionalRadarChart('radar-america', [90, 65, 50]);
 
   // Live Data Counter for Child Marriages
   const childCounter = document.getElementById('child-marriage-counter');
@@ -1829,48 +1829,48 @@ document.querySelectorAll('.story-stage').forEach(stage => {
 // --- Update stageData with unified keys ---
 const stageData = {
     birth: {
-        maya: { percentage: 95, description: "Full of potential and wonder" },
-        noah: { percentage: 95, description: "Curious and eager to learn" },
+        maya: { percentage: 100, description: "Full of potential and wonder" },
+        noah: { percentage: 100, description: "Curious and eager to learn" },
         comic: [
             { rageImg: "assets/images/birth.png" }
         ],
         tagline: "Every great journey starts with a single breath"
     },
     primary: {
-        maya: { percentage: 90, description: "Eager to learn and grow" },
-        noah: { percentage: 92, description: "Building strong foundations" },
+        maya: { percentage: 82, description: "Eager to learn and grow" },
+        noah: { percentage: 80, description: "Building strong foundations" },
         comic: [
             { rageImg: "assets/images/primary.png" }
         ],
         tagline: "Primary school opens new worlds"
     },
     secondary: {
-        maya: { percentage: 85, description: "Facing new challenges" },
-        noah: { percentage: 88, description: "Exploring interests" },
+        maya: { percentage: 65, description: "Facing new challenges" },
+        noah: { percentage: 70, description: "Exploring interests" },
         comic: [
             { rageImg: "assets/images/secondary.png" }
         ],
         tagline: "Secondary school shapes ambitions"
     },
     tertiary: {
-        maya: { percentage: 80, description: "Pursuing higher education" },
-        noah: { percentage: 83, description: "Preparing for the future" },
+        maya: { percentage: 54, description: "Pursuing higher education" },
+        noah: { percentage: 60, description: "Preparing for the future" },
         comic: [
             { rageImg: "assets/images/teritory.png" }
         ],
         tagline: "Tertiary education unlocks potential"
     },
     firstjob: {
-        maya: { percentage: 75, description: "Breaking into the workforce" },
-        noah: { percentage: 80, description: "Starting a career" },
+        maya: { percentage: 32, description: "Breaking into the workforce" },
+        noah: { percentage: 65, description: "Starting a career" },
         comic: [
             { rageImg: "assets/images/first-job.png" }
         ],
         tagline: "First job, first big step"
     },
     career: {
-        maya: { percentage: 70, description: "Fighting for equal opportunities" },
-        noah: { percentage: 78, description: "Climbing the career ladder" },
+        maya: { percentage: 21, description: "Fighting for equal opportunities" },
+        noah: { percentage: 70, description: "Climbing the career ladder" },
         comic: [
             { rageImg: "assets/images/career.png" }
         ],
@@ -1899,8 +1899,10 @@ function updateStage(stageName) {
         comicContent.appendChild(sceneDiv);
     }
     document.getElementById('tagline').textContent = data.tagline;
-    updateCharacterFill('maya', data.maya.percentage);
-    updateCharacterFill('noah', data.noah.percentage);
+    // updateCharacterFill('maya', data.maya.percentage);
+    // updateCharacterFill('noah', data.noah.percentage);
+    updateChartBoy(data.noah.percentage);
+    updateChartGirl(data.maya.percentage);
     document.querySelectorAll('.journey-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.stage-dot').forEach(dot => dot.classList.remove('active'));
     const btn = document.querySelector(`.journey-btn[data-stage="${stageName}"]`);
@@ -1938,3 +1940,204 @@ function updateCharacterFill(character, percentage) {
     stops[2].setAttribute('offset', fillOffset);
     stops[3].setAttribute('offset', '100%');
 }
+
+// ---------------- Chatbox Demo ----------------
+document.addEventListener('DOMContentLoaded', () => {
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatbox = document.getElementById('chatbox');
+  const chatClose = document.getElementById('chat-close');
+  const messages = document.getElementById('chat-messages');
+
+  if (!chatToggle || !chatbox) return; // safety
+
+  const qa = {
+    'What is gender equality?': 'Gender equality means that women, men and non-binary people have equal rights, responsibilities and opportunities. It does not mean everyone is the same – it means that access to life opportunities is not limited by gender.',
+    'Show me global stats': 'Globally, women hold about 28% of managerial positions and earn roughly 84¢ for every dollar earned by men. In education, 89.6% of girls are enrolled in primary school.',
+    'How can I help?': 'You can mentor girls in STEM, advocate for equal pay, support inclusive policies and share data to raise awareness.'
+  };
+
+  function addMessage(text, sender = 'user') {
+    const div = document.createElement('div');
+    div.className = `chat-message ${sender}`;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  // Attach click listeners to sample buttons
+  document.querySelectorAll('.sample-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.textContent;
+      addMessage(q, 'user');
+      setTimeout(() => addMessage(qa[q] || 'Thanks for reaching out!', 'bot'), 400);
+    });
+  });
+
+  chatToggle.addEventListener('click', () => {
+    chatbox.classList.add('open');
+    chatToggle.style.display = 'none';
+  });
+
+  chatClose.addEventListener('click', () => {
+    chatbox.classList.remove('open');
+    chatToggle.style.display = 'block';
+  });
+});
+
+// Smooth scroll from Begin button to story section
+const beginBtn = document.querySelector('.begin-btn');
+const storySection = document.getElementById('story');
+if (beginBtn && storySection) {
+  beginBtn.addEventListener('click', () => {
+    storySection.scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+
+// equality code
+const chartConfig = {
+  type: 'radar',
+  options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+          r: {
+              beginAtZero: true,
+              max: 100,
+              ticks: {
+                  display: false,
+                  stepSize: 20
+              },
+              grid: {
+                  color: 'rgba(142, 154, 175, 0.2)',
+                  lineWidth: 1
+              },
+              angleLines: {
+                  color: 'rgba(142, 154, 175, 0.2)',
+                  lineWidth: 1
+              },
+              pointLabels: {
+                  font: {
+                      size: 11,
+                      weight: '500',
+                      family: 'Inter'
+                  },
+                  color: '#8e9aaf',
+                  padding: 15
+              }
+          }
+      },
+      plugins: {
+          legend: {
+              display: false
+          },
+          tooltip: {
+              backgroundColor: 'rgba(44, 62, 80, 0.9)',
+              bodyColor: '#ffffff',
+              bodyFont: {
+                  family: 'Inter',
+                  size: 12
+              },
+              cornerRadius: 6,
+              displayColors: false,
+              callbacks: {
+                  label: function(context) {
+                      return context.parsed.r + '%';
+                  }
+              }
+          }
+      },
+      elements: {
+          line: {
+              borderWidth: 2,
+              tension: 0.1
+          },
+          point: {
+              radius: 4,
+              hoverRadius: 6,
+              borderWidth: 2,
+              borderColor: '#ffffff'
+          }
+      },
+      interaction: {
+          intersect: false
+      }
+  }
+};
+
+// Data for each region with exact values from the image
+const regions = [
+  {
+      id: 'chart1',
+      data: [92, 65, 35],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  },
+  {
+      id: 'chart2',
+      data: [88, 58, 28],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  },
+  {
+      id: 'chart3',
+      data: [82, 45, 22],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  },
+  {
+      id: 'chart4',
+      data: [90, 52, 31],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  }
+];
+
+// Initialize charts when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  regions.forEach(region => {
+      const ctx = document.getElementById(region.id);
+      if (ctx) {
+          new Chart(ctx.getContext('2d'), {
+              ...chartConfig,
+              data: {
+                  labels: ['Education', 'Workforce', 'Leadership'],
+                  datasets: [{
+                      data: region.data,
+                      backgroundColor: region.color,
+                      borderColor: region.borderColor,
+                      pointBackgroundColor: region.borderColor,
+                      pointBorderColor: '#ffffff',
+                      pointBorderWidth: 2
+                  }]
+              }
+          });
+      }
+  });
+
+  // Add smooth entrance animations
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+          card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+      }, index * 100);
+  });
+});
+
+// Handle window resize to ensure charts remain responsive
+window.addEventListener('resize', function() {
+  // Chart.js handles resize automatically, but we can add custom logic here if needed
+  setTimeout(() => {
+      Chart.instances.forEach(chart => {
+          chart.resize();
+      });
+  }, 100);
+});
+
+
+
