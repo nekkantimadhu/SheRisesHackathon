@@ -14,7 +14,7 @@
 <!-- Home Image Hero Section -->
 <div class="home-hero">
   <img src="assets/images/home.png" alt="Home" class="home-img" />
-  <button class="begin-btn" onclick="document.getElementById('live-dashboard').scrollIntoView({behavior:'smooth'})">Begin</button>
+  <button class="begin-btn" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth'})">Begin</button>
 </div>
 
 <!-- Navigation -->
@@ -253,50 +253,98 @@
 
 <!-- Regional Gender Equality Index Section -->
 <section class="regional-gender-index-section" style="padding: 3rem 0; background: #fafbfc;">
-  <div class="container">
-    <h2 style="text-align:center; margin-bottom:2.5rem;">Regional Gender Equality Index</h2>
-    <div class="regional-index-grid" style="display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;">
-      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
-        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Europe & Central Asia</div>
-        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">78.5</div>
-        <canvas id="radar-europe" width="180" height="120" style="margin-bottom:1rem;"></canvas>
-        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
-          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">92%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">65%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">35%</div></div>
+  <div class="container-eq">
+    <h1-eq>Regional Gender Equality Index</h1-eq>
+        
+        <div class="dashboard-grid">
+            <div class="card-eq">
+                <h2 class="region-title">Europe & Central Asia</h2>
+                <div class="overall-score">78.5</div>
+                <div class="chart-container">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="metrics-container">
+                    <div class="metric">
+                        <div class="metric-label">Education</div>
+                        <div class="metric-value">92%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Workforce</div>
+                        <div class="metric-value">65%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Leadership</div>
+                        <div class="metric-value">35%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-eq">
+                <h2 class="region-title">East Asia & Pacific</h2>
+                <div class="overall-score">72.3</div>
+                <div class="chart-container">
+                    <canvas id="chart2"></canvas>
+                </div>
+                <div class="metrics-container">
+                    <div class="metric">
+                        <div class="metric-label">Education</div>
+                        <div class="metric-value">88%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Workforce</div>
+                        <div class="metric-value">58%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Leadership</div>
+                        <div class="metric-value">28%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-eq">
+                <h2 class="region-title">Sub-Saharan Africa</h2>
+                <div class="overall-score">65.8</div>
+                <div class="chart-container">
+                    <canvas id="chart3"></canvas>
+                </div>
+                <div class="metrics-container">
+                    <div class="metric">
+                        <div class="metric-label">Education</div>
+                        <div class="metric-value">82%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Workforce</div>
+                        <div class="metric-value">45%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Leadership</div>
+                        <div class="metric-value">22%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-eq">
+                <h2 class="region-title">Latin America & Caribbean</h2>
+                <div class="overall-score">74.2</div>
+                <div class="chart-container">
+                    <canvas id="chart4"></canvas>
+                </div>
+                <div class="metrics-container">
+                    <div class="metric">
+                        <div class="metric-label">Education</div>
+                        <div class="metric-value">90%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Workforce</div>
+                        <div class="metric-value">52%</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-label">Leadership</div>
+                        <div class="metric-value">31%</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
-        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">East Asia & Pacific</div>
-        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">72.3</div>
-        <canvas id="radar-asia" width="180" height="120" style="margin-bottom:1rem;"></canvas>
-        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
-          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">88%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">58%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">28%</div></div>
-        </div>
-      </div>
-      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
-        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Sub-Saharan Africa</div>
-        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">65.8</div>
-        <canvas id="radar-africa" width="180" height="120" style="margin-bottom:1rem;"></canvas>
-        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
-          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">82%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">45%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">22%</div></div>
-        </div>
-      </div>
-      <div class="regional-index-card" style="background:#fff; border-radius:18px; box-shadow:0 4px 24px #0001; padding:2rem 2.5rem; min-width:260px; max-width:300px; flex:1 1 260px; text-align:center;">
-        <div class="region-title" style="font-weight:600; font-size:1.15rem; margin-bottom:0.5rem;">Latin America & Caribbean</div>
-        <div class="region-index" style="font-size:2.5rem; color:#4a6cf7; font-weight:700; margin-bottom:0.5rem;">74.2</div>
-        <canvas id="radar-america" width="180" height="120" style="margin-bottom:1rem;"></canvas>
-        <div style="display:flex; justify-content:space-between; font-size:1rem; margin-top:0.5rem; gap:0.5rem;">
-          <div><div style="color:#888; font-size:0.95rem;">Education</div><div style="font-weight:700;">90%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Workforce</div><div style="font-weight:700;">52%</div></div>
-          <div><div style="color:#888; font-size:0.95rem;">Leadership</div><div style="font-weight:700;">31%</div></div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -363,7 +411,7 @@
       </div>
       
       <div class="data-visualization">
-        <div class="chart-container">
+        <div class="main-chart-container">
           <canvas id="mainDataChart"></canvas>
         </div>
         <div class="data-insights">
@@ -583,7 +631,7 @@
   <section style="display:flex;justify-content:center;align-items:stretch;gap:2.5rem;flex-wrap:wrap;">
     <!-- Card 1 -->
     <div style="background:#fff;border:3px solid #222;border-radius:18px;box-shadow:0 4px 18px #0001;padding:2.2rem 2rem 1.5rem 2rem;min-width:220px;max-width:260px;display:flex;flex-direction:column;align-items:center;">
-      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aarushi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
+      <img src="assets/images/hiral.jpeg" alt="Aarushi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
       <div style="font-size:1.15rem;font-weight:700;color:#222;margin-bottom:0.1rem;">Hiral Shah</div>
       <div style="font-size:1.01rem;color:#666;margin-bottom:1.1rem;">Data Storyteller</div>
       <div style="background:#fff;border:2.5px solid #222;border-radius:18px 18px 18px 0;padding:0.7rem 1.1rem;font-size:1.05rem;color:#222;font-family:'Comic Sans MS','Comic Sans',cursive,sans-serif;box-shadow:0 2px 8px #0001;min-width:120px;text-align:left;">💬 "I squashed the final bug!"</div>
@@ -597,7 +645,7 @@
     </div>
     <!-- Card 3 -->
     <div style="background:#fff;border:3px solid #222;border-radius:18px;box-shadow:0 4px 18px #0001;padding:2.2rem 2rem 1.5rem 2rem;min-width:220px;max-width:260px;display:flex;flex-direction:column;align-items:center;">
-      <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Saanvi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
+      <img src="assets/images/padmasree.jpeg" alt="Saanvi" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #4a6cf7;margin-bottom:0.7rem;box-shadow:0 2px 8px #0001;" />
       <div style="font-size:1.15rem;font-weight:700;color:#222;margin-bottom:0.1rem;">Padmasree</div>
       <div style="font-size:1.01rem;color:#666;margin-bottom:1.1rem;">AI/ML Prodigy</div>
       <div style="background:#fff;border:2.5px solid #222;border-radius:18px 18px 18px 0;padding:0.7rem 1.1rem;font-size:1.05rem;color:#222;font-family:'Comic Sans MS','Comic Sans',cursive,sans-serif;box-shadow:0 2px 8px #0001;min-width:120px;text-align:left;">💬 "Deploy, break, repeat!"</div>

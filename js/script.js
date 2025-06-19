@@ -1395,7 +1395,7 @@ function initializeDataExplorer() {
   mainDataChart = new Chart(ctx, {
       type: 'bar',
       data: {
-          labels: ['Primary', 'Secondary', 'Tertiary'],
+          labels: ['Phase I', 'Phase II', 'Phase III'],
           datasets: [{
               label: 'Female',
               data: [89.6, 76.0, 41.7],
@@ -2132,6 +2132,83 @@ document.addEventListener('DOMContentLoaded', function() {
 // Handle window resize to ensure charts remain responsive
 window.addEventListener('resize', function() {
   // Chart.js handles resize automatically, but we can add custom logic here if needed
+  setTimeout(() => {
+      Chart.instances.forEach(chart => {
+          chart.resize();
+      });
+  }, 100);
+});
+
+
+
+
+//equality code
+
+const regions1 = [
+  {
+      id: 'chart1',
+      data: [92, 65, 35],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  },
+  {
+      id: 'chart2',
+      data: [88, 58, 28],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  },
+  {
+      id: 'chart3',
+      data: [82, 45, 22],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  },
+  {
+      id: 'chart4',
+      data: [90, 52, 31],
+      color: 'rgba(79, 124, 255, 0.15)',
+      borderColor: '#4f7cff'
+  }
+];
+
+// Initialize charts when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  regions1.forEach(region => {
+      const ctx = document.getElementById(region.id);
+      if (ctx) {
+          new Chart(ctx.getContext('2d'), {
+              ...chartConfig,
+              data: {
+                  labels: ['Education', 'Workforce', 'Leadership'],
+                  datasets: [{
+                      data: region.data,
+                      backgroundColor: region.color,
+                      borderColor: region.borderColor,
+                      pointBackgroundColor: region.borderColor,
+                      pointBorderColor: '#ffffff',
+                      pointBorderWidth: 2
+                  }]
+              }
+          });
+      }
+  });
+
+  // Add smooth entrance animations
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+          card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+      }, index * 100);
+  });
+});
+
+// Handle window resize to ensure charts remain responsive
+window.addEventListener('resize', function() {
   setTimeout(() => {
       Chart.instances.forEach(chart => {
           chart.resize();
