@@ -2775,3 +2775,78 @@ body, html, .container, .container-eq, .main-content, .dashboard-grid, .data-vis
   }
 }
 
+@media (max-width: 1024px) {
+  .data-visualization, .dashboard-grid, .main-content, .story-stage {
+    grid-template-columns: 1fr !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 10px 0 !important;
+  }
+  .data-visualization, .dashboard-grid, .main-content, .story-stage {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+  }
+  .main-chart-container, .chart-container {
+    min-width: 0 !important;
+    width: 100% !important;
+    height: 180px !important;
+    min-height: 120px !important;
+    margin-bottom: 10px !important;
+  }
+  .data-insights, .stage-narrative {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100vw !important;
+  }
+  .overall-score {
+    font-size: 1.5rem !important;
+  }
+  .region-title, .data-insights h3, .stage-narrative h3, h2, h1, h1-eq {
+    font-size: 1.2rem !important;
+    padding: 8px 0 6px 0 !important;
+    margin-bottom: 10px !important;
+  }
+  .narrative-text p, .data-insights p, .metric-label, .metric-value, .landscape-stat, .description {
+    font-size: 0.95rem !important;
+  }
+  .nav-menu {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: flex-start !important;
+    width: 100vw !important;
+  }
+  .nav-link {
+    font-size: 0.95rem !important;
+    padding: 8px 6px !important;
+    min-width: 80px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-menu {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+  .nav-link {
+    font-size: 0.85rem !important;
+    padding: 6px 2px !important;
+    min-width: 60px !important;
+  }
+  h1, h2, h1-eq, .region-title, .data-insights h3, .stage-narrative h3 {
+    font-size: 1rem !important;
+    padding: 4px 0 2px 0 !important;
+    margin-bottom: 6px !important;
+  }
+  .narrative-text p, .data-insights p, .metric-label, .metric-value, .landscape-stat, .description {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Prevent horizontal scroll everywhere */
+body, html, .container, .container-eq, .main-content, .dashboard-grid, .data-visualization, .story-section, .data-section, .insights-section, .close-gap-section, .footer-minimal {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
